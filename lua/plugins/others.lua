@@ -63,6 +63,15 @@ M.colorizer = function()
     vim.cmd("ColorizerReloadAllBuffers")
 end
 
+M.lspsaga = function()
+    local present, lspsaga = pcall(require, "lspsaga")
+    if not present then
+        return
+    end
+
+    lspsaga.init_lsp_saga({})
+end
+
 M.blankline = function()
     vim.g.indentLine_enabled = 1
     vim.g.indent_blankline_char = "▏"

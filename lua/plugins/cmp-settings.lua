@@ -15,10 +15,8 @@ require("cmp_dictionary").setup({
     dic = {
         ["javascript, javascriptreact, html"] = { "~/.config/nvim/dict/bootstrap.dic" },
     },
-    exact = 2,
-    async = true,
+    async = false,
     capacity = 5,
-    debug = false,
 })
 
 cmp.setup({
@@ -81,6 +79,7 @@ cmp.setup({
         { name = "nvim_lsp", keyboard_length = 3 },
         { name = "luasnip", keyboard_length = 2 },
         { name = "buffer", keyboard_length = 3 },
+        { name = "latex_symbols" },
         { name = "dictionary", keyboard_length = 3 },
         { name = "path" },
     }),

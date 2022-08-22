@@ -22,55 +22,13 @@ end
 
 return require("packer").startup({
     function(use)
-        use({ "wbthomason/packer.nvim" })
+        use("lewis6991/impatient.nvim")
 
         use({
-            "neovim/nvim-lspconfig",
-            event = "BufRead",
-            config = function()
-                require("plugins.lsp")
-            end,
+            "wbthomason/packer.nvim",
         })
 
-        use({
-            "williamboman/mason.nvim",
-            config = function()
-                require("plugins.others").mason()
-            end,
-        })
-
-        use({
-            "hrsh7th/nvim-cmp",
-            event = "InsertEnter",
-            config = function()
-                require("plugins.cmp-settings")
-            end,
-            wants = "LuaSnip",
-            requires = {
-                {
-                    "L3MON4D3/LuaSnip",
-                    wants = "friendly-snippets",
-                    event = "InsertCharPre",
-                    config = function()
-                        require("plugins.others").luasnip()
-                    end,
-                },
-                {
-                    "rafamadriz/friendly-snippets",
-                    module = { "cmp", "cmp_nvim_lsp" },
-                    event = "InsertCharPre",
-                },
-            },
-        })
-
-        use({ "hrsh7th/cmp-path", after = "nvim-cmp" })
-        use({ "hrsh7th/cmp-buffer", after = "nvim-cmp" })
-        use({ "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" })
-        use({ "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" })
-        use({ "hrsh7th/cmp-cmdline", after = "nvim-cmp" })
-        use({ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" })
-        use({ "uga-rosa/cmp-dictionary", after = "nvim-cmp" })
-
+        -- UI
         use({
             "catppuccin/nvim",
             as = "catppuccin",
@@ -78,14 +36,17 @@ return require("packer").startup({
                 require("plugins.catppuccin-settings")
             end,
         })
+        use({
+            "kyazdani42/nvim-web-devicons",
+            after = "catppuccin",
+        })
 
         use({
-            "nvim-treesitter/nvim-treesitter",
-            event = "BufRead",
+            "kyazdani42/nvim-tree.lua",
+            after = "nvim-web-devicons",
             config = function()
-                require("plugins.treesitter-settings")
+                require("plugins.ntree-settings")
             end,
-            run = ":TSUpdate",
         })
 
         use({
@@ -98,22 +59,124 @@ return require("packer").startup({
         })
 
         use({
-            "numToStr/Comment.nvim",
-            keys = { "gc", "gcc", "gbc", "gb" },
-            config = function()
-                require("plugins.others").comment()
-            end,
-        })
-        use({
-            "kylechui/nvim-surround",
-            event = "BufRead",
+            "akinsho/bufferline.nvim",
+            after = "lualine.nvim",
             tag = "*",
             config = function()
-                require("plugins.others").surround()
+                require("plugins.bufferline-settings")
             end,
         })
 
-        use({ "windwp/nvim-ts-autotag", event = "BufRead" })
+        -- Faster visualization
+        use({
+            "lukas-reineke/indent-blankline.nvim",
+            event = { "BufRead", "BufWinEnter", "BufNewFile" },
+            setup = function()
+                require("plugins.others").blankline()
+            end,
+        })
+        use({
+            "norcalli/nvim-colorizer.lua",
+            event = { "BufRead", "BufWinEnter", "BufNewFile" },
+            config = function()
+                require("plugins.others").colorizer()
+            end,
+        })
+        use({
+            "nvim-treesitter/nvim-treesitter",
+            event = { "BufRead", "BufWinEnter", "BufNewFile" },
+            config = function()
+                require("plugins.treesitter-settings")
+            end,
+            run = ":TSUpdate",
+        })
+
+        use({
+            "p00f/nvim-ts-rainbow",
+            event = { "BufRead", "BufWinEnter", "BufNewFile" },
+        })
+
+        use({
+            "lewis6991/gitsigns.nvim",
+            event = { "BufRead" },
+            config = function()
+                require("plugins.others").gitsigns()
+            end,
+        })
+
+        -- LSP
+        use({
+            "williamboman/mason.nvim",
+            config = function()
+                require("plugins.others").mason()
+            end,
+        })
+
+        use({ "brymer-meneses/grammar-guard.nvim", after = "mason.nvim" })
+
+        use({
+            opt = true,
+            "neovim/nvim-lspconfig",
+            event = { "BufRead", "BufWinEnter", "BufNewFile" },
+            config = function()
+                require("plugins.lsp")
+            end,
+        })
+
+        use({
+            "glepnir/lspsaga.nvim",
+            branch = "main",
+            after = "nvim-lspconfig",
+            config = function()
+                require("plugins.others").lspsaga()
+            end,
+        })
+
+        use({
+            "onsails/lspkind-nvim",
+            after = "lspsaga.nvim",
+            config = function()
+                require("plugins.lspkind-settings")
+            end,
+        })
+
+        -- cmp and snippets
+        use({
+            "dsznajder/vscode-es7-javascript-react-snippets",
+            event = "InsertEnter",
+            run = "yarn install --frozen-lockfile && yarn compile",
+        })
+
+        use({
+            "rafamadriz/friendly-snippets",
+            module = { "cmp", "cmp_nvim_lsp" },
+            after = "vscode-es7-javascript-react-snippets",
+        })
+        use({
+            "hrsh7th/nvim-cmp",
+            after = { "vscode-es7-javascript-react-snippets" },
+            config = function()
+                require("plugins.cmp-settings")
+            end,
+        })
+
+        use({
+            "L3MON4D3/LuaSnip",
+            wants = { "friendly-snippets" },
+            after = "nvim-cmp",
+            config = function()
+                require("plugins.others").luasnip()
+            end,
+        })
+
+        use({ "saadparwaiz1/cmp_luasnip", after = "LuaSnip" })
+        use({ "uga-rosa/cmp-dictionary", after = "cmp_luasnip" })
+        use({ "hrsh7th/cmp-nvim-lua", after = "cmp-dictionary" })
+        use({ "hrsh7th/cmp-nvim-lsp", after = "cmp-nvim-lua" })
+        use({ "hrsh7th/cmp-buffer", after = "cmp-nvim-lsp" })
+        use({ "hrsh7th/cmp-path", after = "cmp-buffer" })
+        use({ "hrsh7th/cmp-cmdline", after = "cmp-buffer" })
+        use({ "kdheepak/cmp-latex-symbols", after = "cmp-cmdline" })
 
         use({
             "windwp/nvim-autopairs",
@@ -124,26 +187,28 @@ return require("packer").startup({
         })
 
         use({
+            "numToStr/Comment.nvim",
+            keys = { "gc", "gcc", "gbc", "gb" },
+            config = function()
+                require("plugins.others").comment()
+            end,
+        })
+        use({
+            "kylechui/nvim-surround",
+            event = { "BufRead", "BufWinEnter", "BufNewFile" },
+            tag = "*",
+            config = function()
+                require("plugins.others").surround()
+            end,
+        })
+
+        use({ "windwp/nvim-ts-autotag", event = { "BufRead", "BufWinEnter", "BufNewFile" } })
+
+        use({
             "mhartington/formatter.nvim",
-            event = "BufRead",
+            event = "BufWritePre",
             config = function()
                 require("plugins.formatter-settings")
-            end,
-        })
-
-        use({
-            "lewis6991/gitsigns.nvim",
-            event = "BufRead",
-            config = function()
-                require("plugins.others").gitsigns()
-            end,
-        })
-
-        use({
-            "lukas-reineke/indent-blankline.nvim",
-            event = "BufRead",
-            setup = function()
-                require("plugins.others").blankline()
             end,
         })
 
@@ -156,39 +221,6 @@ return require("packer").startup({
         })
 
         use({
-            "kyazdani42/nvim-tree.lua",
-            requires = { "kyazdani42/nvim-web-devicons" },
-            config = function()
-                require("plugins.ntree-settings")
-            end,
-        })
-
-        use({
-            "onsails/lspkind-nvim",
-            after = { "LuaSnip" },
-            config = function()
-                require("plugins.lspkind-settings")
-            end,
-        })
-
-        use({
-            "norcalli/nvim-colorizer.lua",
-            after = { "nvim-treesitter" },
-            config = function()
-                require("plugins.others").colorizer()
-            end,
-        })
-
-        use({
-            "akinsho/bufferline.nvim",
-            tag = "*",
-            config = function()
-                require("plugins.bufferline-settings")
-            end,
-            requires = "kyazdani42/nvim-web-devicons",
-        })
-
-        use({
             "akinsho/toggleterm.nvim",
             keys = { "<M-q>" },
             tag = "v2.*",
@@ -198,14 +230,6 @@ return require("packer").startup({
         })
 
         use({ "lambdalisue/suda.vim", cmd = { "SudaRead, SudaWrite" } })
-
-        use({
-            "dsznajder/vscode-es7-javascript-react-snippets",
-            after = { "LuaSnip" },
-            run = "yarn install --frozen-lockfile && yarn compile",
-        })
-
-        use("lewis6991/impatient.nvim")
 
         if do_packer_sync then
             require("packer").sync()

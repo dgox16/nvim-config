@@ -1,5 +1,4 @@
 local present, lspconfig = pcall(require, "lspconfig")
-
 if not present then
     return
 end
@@ -65,6 +64,24 @@ lspconfig.tsserver.setup({
     handlers = handlers,
     on_attach = on_attach,
     root_dir = require("plugins.lsp.servers.typescript").root_dir,
+})
+
+require("grammar-guard").init()
+lspconfig.grammar_guard.setup({
+    capabilities = capabilities,
+    handlers = handlers,
+    on_attach = on_attach,
+    cmd = require("plugins.lsp.servers.grammar").cmd,
+    settings = require("plugins.lsp.servers.grammar").settings,
+    root_dir = require("plugins.lsp.servers.grammar").root_dir,
+})
+
+lspconfig.texlab.setup({
+    capabilities = capabilities,
+    handlers = handlers,
+    on_attach = on_attach,
+    settings = require("plugins.lsp.servers.texlab").settings,
+    root_dir = require("plugins.lsp.servers.texlab").root_dir,
 })
 
 for _, server in ipairs({ "bashls", "cssls", "clangd", "html", "emmet_ls", "pyright", "rust_analyzer", "tailwindcss" }) do

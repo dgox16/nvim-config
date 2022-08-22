@@ -29,7 +29,11 @@ keymap("n", "<M-d>", ":bd<CR>", opts)
 keymap("n", "<M-h>", ":bp<CR>", opts)
 keymap("n", "<M-l>", ":bn<CR>", opts)
 -- LSP
-keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
+keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
+keymap("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
+keymap("v", "<leader>ca", "<cmd><C-U>Lspsaga range_code_action<CR>", opts)
+keymap("v", "gp", "<cmd>Lspsaga preview_definition<CR>", opts)
 keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
@@ -39,8 +43,7 @@ keymap("n", "<Leader>ff", ":FzfLua files<CR>", opts)
 keymap("n", "<Leader>fg", ":FzfLua grep_project<CR>", opts)
 keymap("n", "<Leader>fb", ":FzfLua buffers<CR>", opts)
 -- Buscar y remplazar
-keymap("n", "<Leader>r", ":%s///g<Left><Left><Left>", { noremap = true, silent = false })
-keymap("n", "<Leader>R", ":s///g<Left><Left><Left>", { noremap = true, silent = false })
+keymap("n", "<leader>r", "<cmd>Lspsaga rename<CR>", opts)
 -- Ejecutar Python
 keymap("n", "py", ":!python %<CR>", opts)
 -- Punto y coma al final
@@ -62,6 +65,9 @@ keymap("n", "<Up>", "(v:count == 0 ? 'gk' : 'k')", { silent = true, expr = true 
 
 keymap("n", "<Leader>m", "<cmd> set rnu! <CR>", opts)
 -- MODO INSERTAR
+keymap("i", "<C-d>", "<C-O>dw", opts)
+keymap("i", "<C-D>", "<C-O>D", opts)
+
 keymap("i", "jk", "<ESC>", opts)
 
 keymap("i", "<M-p>", "<Esc>:m .-2<CR>==gi", opts)
