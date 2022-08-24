@@ -1,25 +1,3 @@
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]])
-
-local fn = vim.fn
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-local do_packer_sync = nil
-
-if fn.empty(fn.glob(install_path)) > 0 then
-    do_packer_sync = fn.system({
-        "git",
-        "clone",
-        "--depth",
-        "1",
-        "https://github.com/wbthomason/packer.nvim",
-        install_path,
-    })
-end
-
 return require("packer").startup({
     function(use)
         use("lewis6991/impatient.nvim")
@@ -32,6 +10,7 @@ return require("packer").startup({
         use({
             "catppuccin/nvim",
             as = "catppuccin",
+            run = ":CatppuccinCompile",
             config = function()
                 require("plugins.catppuccin-settings")
             end,
@@ -83,8 +62,12 @@ return require("packer").startup({
             end,
         })
         use({
-            "nvim-treesitter/nvim-treesitter",
+            "p00f/nvim-ts-rainbow",
             event = { "BufRead", "BufWinEnter", "BufNewFile" },
+        })
+        use({
+            "nvim-treesitter/nvim-treesitter",
+            after = "nvim-ts-rainbow",
             config = function()
                 require("plugins.treesitter-settings")
             end,
@@ -92,13 +75,8 @@ return require("packer").startup({
         })
 
         use({
-            "p00f/nvim-ts-rainbow",
-            event = { "BufRead", "BufWinEnter", "BufNewFile" },
-        })
-
-        use({
             "lewis6991/gitsigns.nvim",
-            event = { "BufRead" },
+            event = { "BufRead", "BufWinEnter", "BufNewFile" },
             config = function()
                 require("plugins.others").gitsigns()
             end,
@@ -112,7 +90,13 @@ return require("packer").startup({
             end,
         })
 
-        use({ "brymer-meneses/grammar-guard.nvim", after = "mason.nvim" })
+        use({
+            "brymer-meneses/grammar-guard.nvim",
+            after = "mason.nvim",
+            config = function()
+                require("grammar-guard").init()
+            end,
+        })
 
         use({
             opt = true,
@@ -141,16 +125,16 @@ return require("packer").startup({
         })
 
         -- cmp and snippets
+
         use({
             "dsznajder/vscode-es7-javascript-react-snippets",
             event = "InsertEnter",
             run = "yarn install --frozen-lockfile && yarn compile",
         })
-
         use({
             "rafamadriz/friendly-snippets",
-            module = { "cmp", "cmp_nvim_lsp" },
             after = "vscode-es7-javascript-react-snippets",
+            module = { "cmp", "cmp_nvim_lsp" },
         })
         use({
             "hrsh7th/nvim-cmp",
@@ -159,10 +143,15 @@ return require("packer").startup({
                 require("plugins.cmp-settings")
             end,
         })
-
+        use({
+            "uga-rosa/cmp-dictionary",
+            after = "nvim-cmp",
+            config = function()
+                require("plugins.others").dictionary()
+            end,
+        })
         use({
             "L3MON4D3/LuaSnip",
-            wants = { "friendly-snippets" },
             after = "nvim-cmp",
             config = function()
                 require("plugins.others").luasnip()
@@ -170,8 +159,7 @@ return require("packer").startup({
         })
 
         use({ "saadparwaiz1/cmp_luasnip", after = "LuaSnip" })
-        use({ "uga-rosa/cmp-dictionary", after = "cmp_luasnip" })
-        use({ "hrsh7th/cmp-nvim-lua", after = "cmp-dictionary" })
+        use({ "hrsh7th/cmp-nvim-lua", after = "cmp_luasnip" })
         use({ "hrsh7th/cmp-nvim-lsp", after = "cmp-nvim-lua" })
         use({ "hrsh7th/cmp-buffer", after = "cmp-nvim-lsp" })
         use({ "hrsh7th/cmp-path", after = "cmp-buffer" })
@@ -202,7 +190,7 @@ return require("packer").startup({
             end,
         })
 
-        use({ "windwp/nvim-ts-autotag", event = { "BufRead", "BufWinEnter", "BufNewFile" } })
+        use({ "windwp/nvim-ts-autotag", ft = { "html", "javascript", "javascriptreact" } })
 
         use({
             "mhartington/formatter.nvim",
@@ -230,9 +218,5 @@ return require("packer").startup({
         })
 
         use({ "lambdalisue/suda.vim", cmd = { "SudaRead, SudaWrite" } })
-
-        if do_packer_sync then
-            require("packer").sync()
-        end
     end,
 })

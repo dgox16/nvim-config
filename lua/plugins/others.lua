@@ -72,6 +72,21 @@ M.lspsaga = function()
     lspsaga.init_lsp_saga({})
 end
 
+M.dictionary = function()
+    local present, dictionary = pcall(require, "cmp_dictionary")
+    if not present then
+        return
+    end
+
+    dictionary.setup({
+        dic = {
+            ["javascript, javascriptreact, html"] = { "~/.config/nvim/dict/bootstrap.dic" },
+        },
+        async = false,
+        capacity = 5,
+    })
+end
+
 M.blankline = function()
     vim.g.indentLine_enabled = 1
     vim.g.indent_blankline_char = "▏"
