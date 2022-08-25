@@ -4,17 +4,18 @@ M.filetypes = { "bib", "markdown", "org", "plaintex", "rst", "rnoweb", "tex" } -
 
 M.settings = {
     settings = {
-        checkFrequency = "save",
-        language = "es-AR",
+        language = "es",
+        diagnosticSeverity = "information",
+        sentenceCacheSize = 2000,
         additionalRules = {
             enablePickyRules = true,
-            motherTongue = "es-AR",
+            motherTongue = "es",
         },
     },
 }
 
 M.extra_settings = {
-    load_langs = { "es-AR" },
+    load_langs = { "es" },
     init_check = true,
     path = ".ltex",
     log_level = "none",

@@ -60,7 +60,7 @@ M.colorizer = function()
     }, {
         names = false,
     })
-    vim.cmd("ColorizerReloadAllBuffers")
+    -- vim.cmd("ColorizerReloadAllBuffers")
 end
 
 M.lspsaga = function()

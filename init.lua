@@ -1,6 +1,8 @@
-vim.defer_fn(function()
-    pcall(require, "impatient")
-end, 0)
+local present, impatient = pcall(require, "impatient")
+
+if present then
+    impatient.enable_profile()
+end
 
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
@@ -14,8 +16,5 @@ if fn.empty(fn.glob(install_path)) > 0 then
     vim.cmd("PackerSync")
 end
 
-require("load-plugins")
-
-require("options")
-
-require("keymappings")
+require("core")
+require("plugins")

@@ -61,38 +61,39 @@ lspconfig.sumneko_lua.setup({
     capabilities = capabilities,
     handlers = handlers,
     on_attach = on_attach,
-    settings = require("plugins.lsp.servers.luals").settings,
+    settings = require("configs.lsp.servers.luals").settings,
 })
 
 lspconfig.jsonls.setup({
     capabilities = capabilities,
     handlers = handlers,
     on_attach = on_attach,
-    settings = require("plugins.lsp.servers.json").settings,
+    settings = require("configs.lsp.servers.json").settings,
 })
 
 lspconfig.tsserver.setup({
     capabilities = capabilities,
     handlers = handlers,
     on_attach = on_attach,
-    root_dir = require("plugins.lsp.servers.typescript").root_dir,
+    root_dir = require("configs.lsp.servers.typescript").root_dir,
 })
 
-lspconfig.grammar_guard.setup({
+lspconfig.ltex.setup({
+    on_attach = function(client, bufnr)
+        on_attach(client, bufnr)
+        require("ltex_extra").setup(require("configs.lsp.servers.ltex").extra_settings)
+    end,
     capabilities = capabilities,
-    handlers = handlers,
-    on_attach = on_attach,
-    cmd = require("plugins.lsp.servers.grammar").cmd,
-    settings = require("plugins.lsp.servers.grammar").settings,
-    root_dir = require("plugins.lsp.servers.grammar").root_dir,
+    filetypes = require("configs.lsp.servers.ltex").filetypes,
+    settings = { ltex = require("configs.lsp.servers.ltex").settings },
 })
 
 lspconfig.texlab.setup({
     capabilities = capabilities,
     handlers = handlers,
     on_attach = on_attach,
-    settings = require("plugins.lsp.servers.texlab").settings,
-    root_dir = require("plugins.lsp.servers.texlab").root_dir,
+    settings = require("configs.lsp.servers.texlab").settings,
+    root_dir = require("configs.lsp.servers.texlab").root_dir,
 })
 
 for _, server in ipairs({ "bashls", "cssls", "clangd", "html", "emmet_ls", "pyright", "rust_analyzer", "tailwindcss" }) do
