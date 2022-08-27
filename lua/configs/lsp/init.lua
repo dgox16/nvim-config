@@ -96,7 +96,7 @@ lspconfig.texlab.setup({
     root_dir = require("configs.lsp.servers.texlab").root_dir,
 })
 
-for _, server in ipairs({ "bashls", "cssls", "clangd", "html", "emmet_ls", "pyright", "rust_analyzer", "tailwindcss" }) do
+for _, server in ipairs({ "bashls", "cssls", "clangd", "html", "pyright", "rust_analyzer", "tailwindcss" }) do
     lspconfig[server].setup({
         on_attach = on_attach,
         capabilities = capabilities,

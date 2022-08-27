@@ -1,4 +1,3 @@
-local fn = vim.fn
 local M = {}
 
 M.options = {

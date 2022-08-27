@@ -92,14 +92,6 @@ M.plugins = {
     },
 
     {
-        "glepnir/lspsaga.nvim",
-        branch = "main",
-        config = function()
-            require("configs.others").lspsaga()
-        end,
-    },
-
-    {
         "onsails/lspkind-nvim",
         config = function()
             require("configs.lspkind-settings")
@@ -173,6 +165,7 @@ M.plugins = {
             require("configs.formatter-settings")
         end,
     },
+
     {
         "nvim-telescope/telescope.nvim",
         requires = { { "nvim-lua/plenary.nvim" } },
@@ -180,6 +173,7 @@ M.plugins = {
             require("configs.telescope-settings")
         end,
     },
+
     {
         "nvim-telescope/telescope-fzf-native.nvim",
         run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",

@@ -30,18 +30,18 @@ keymap("n", "<M-h>", ":bp<CR>", opts)
 keymap("n", "<M-l>", ":bn<CR>", opts)
 -- LSP
 keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
-keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-keymap("n", "{e", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
-keymap("n", "}e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
-keymap("v", "gp", "<cmd>Lspsaga preview_definition<CR>", opts)
+keymap("n", "<leader>c", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+keymap("n", "{e", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
+keymap("n", "}e", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 -- FZF
-keymap("n", "<Leader>ff", "<cmd> Telescope find_files <CR>", opts)
-keymap("n", "<Leader>fg", "<cmd> Telescope live_grep <CR>", opts)
+keymap("n", "<Leader>ff", "<cmd>Telescope find_files<CR>", opts)
+keymap("n", "<Leader>fw", "<cmd> Telescope live_grep <CR>", opts)
 keymap("n", "<Leader>fb", "<cmd> Telescope buffers <CR>", opts)
+keymap("n", "<Leader>ft", "<cmd> Telescope treesitter<CR>", opts)
 -- Buscar y remplazar
 keymap("n", "<leader>r", "<cmd>Lspsaga rename<CR>", opts)
 -- Ejecutar Python
@@ -67,8 +67,6 @@ keymap("n", "<Leader>m", "<cmd> set rnu! <CR>", opts)
 -- MODO INSERTAR
 keymap("i", "<C-d>", "<C-O>dw", opts)
 keymap("i", "<C-D>", "<C-O>D", opts)
-
-keymap("i", "jk", "<ESC>", opts)
 
 keymap("i", "<M-p>", "<Esc>:m .-2<CR>==gi", opts)
 keymap("i", "<M-n>", "<Esc>:m .+1<CR>==gi", opts)
