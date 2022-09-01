@@ -1,0 +1,20 @@
+{
+    "Figure in the place": {
+        "prefix": "figh",
+        "body": [
+            "\\begin{figure}[H]",
+            "\t\\begin{center}",
+            "\t\t\\includegraphics[width=0.95\\textwidth]{figures/$1}",
+            "\t\\end{center}",
+            "\t\\caption{$3}",
+            "\t\\label{fig:$4}",
+            "\\end{figure}",
+            "$0"
+        ]
+    },
+
+    "Space between paragraphs": {
+        "prefix": "sbp",
+        "body": ["\\vspace{5mm}"]
+    }
+}

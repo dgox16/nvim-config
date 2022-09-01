@@ -25,9 +25,10 @@ M.plugins = {
     },
 
     {
-        "hoob3rt/lualine.nvim",
+        "glepnir/galaxyline.nvim",
+        branch = "main",
         config = function()
-            require("configs.lualine-settings")
+            require("configs.statusline")
         end,
         requires = { "kyazdani42/nvim-web-devicons", opt = true },
     },
@@ -134,7 +135,6 @@ M.plugins = {
     { "hrsh7th/cmp-buffer" },
     { "hrsh7th/cmp-path" },
     { "hrsh7th/cmp-cmdline" },
-    { "kdheepak/cmp-latex-symbols" },
 
     {
         "windwp/nvim-autopairs",

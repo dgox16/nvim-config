@@ -23,6 +23,12 @@
                     "typescript.tsx"
                 ],
                 "path": "./typescript.json"
+            },
+            {
+                "language": [
+                    "tex"
+                ],
+                "path": "./tex.json"
             }
         ]
     }

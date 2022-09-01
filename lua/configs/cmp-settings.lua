@@ -73,7 +73,6 @@ cmp.setup({
         { name = "nvim_lsp", keyboard_length = 3 },
         { name = "luasnip", keyboard_length = 2 },
         { name = "buffer", keyboard_length = 3 },
-        { name = "latex_symbols" },
         { name = "dictionary", keyboard_length = 3 },
         { name = "path" },
     }),
