@@ -5,7 +5,7 @@ if not (present1 or present2) then
 end
 
 local get_lsp_client = function(msg)
-    msg = msg or "LSP Inactive"
+    msg = msg or "Inactive"
     local bufnr = vim.api.nvim_get_current_buf()
     local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
     local clients = vim.lsp.get_active_clients(bufnr)

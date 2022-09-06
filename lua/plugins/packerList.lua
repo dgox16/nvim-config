@@ -3,6 +3,7 @@ local M = {}
 M.plugins = {
     { "lewis6991/impatient.nvim" },
 
+    { "nvim-lua/plenary.nvim" },
     { "wbthomason/packer.nvim" },
 
     -- UI
@@ -144,6 +145,13 @@ M.plugins = {
     },
 
     {
+        "folke/trouble.nvim",
+        config = function()
+            require("configs.others").trouble()
+        end,
+    },
+
+    {
         "numToStr/Comment.nvim",
         config = function()
             require("configs.others").comment()
@@ -168,7 +176,6 @@ M.plugins = {
 
     {
         "nvim-telescope/telescope.nvim",
-        requires = { { "nvim-lua/plenary.nvim" } },
         config = function()
             require("configs.telescope-settings")
         end,

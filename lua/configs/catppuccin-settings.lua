@@ -47,7 +47,7 @@ catppuccin_setting.setup({
             },
         },
         coc_nvim = false,
-        lsp_trouble = false,
+        lsp_trouble = true,
         cmp = true,
         lsp_saga = true,
         gitgutter = false,

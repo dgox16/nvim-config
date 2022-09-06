@@ -43,7 +43,7 @@ keymap("n", "<Leader>fw", "<cmd> Telescope live_grep <CR>", opts)
 keymap("n", "<Leader>fb", "<cmd> Telescope buffers <CR>", opts)
 keymap("n", "<Leader>ft", "<cmd> Telescope treesitter<CR>", opts)
 -- Buscar y remplazar
-keymap("n", "<leader>r", "<cmd>Lspsaga rename<CR>", opts)
+keymap("n", "<Leader>r", ":%s///g<Left><Left><Left>", { noremap = true, silent = false })
 -- Ejecutar Python
 keymap("n", "py", ":!python %<CR>", opts)
 -- Punto y coma al final
@@ -63,10 +63,9 @@ keymap("n", "j", "(v:count == 0 ? 'gj' : 'j')", { silent = true, expr = true })
 keymap("n", "<Down>", "(v:count == 0 ? 'gj' : 'j')", { silent = true, expr = true })
 keymap("n", "<Up>", "(v:count == 0 ? 'gk' : 'k')", { silent = true, expr = true })
 
-keymap("n", "<Leader>m", "<cmd> set rnu! <CR>", opts)
+keymap("n", "<leader>xx", "<cmd>TroubleToggle<cr>", opts)
 -- MODO INSERTAR
 keymap("i", "<C-d>", "<C-O>dw", opts)
-keymap("i", "<C-D>", "<C-O>D", opts)
 
 keymap("i", "<M-p>", "<Esc>:m .-2<CR>==gi", opts)
 keymap("i", "<M-n>", "<Esc>:m .+1<CR>==gi", opts)

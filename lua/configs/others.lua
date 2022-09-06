@@ -63,13 +63,13 @@ M.colorizer = function()
     -- vim.cmd("ColorizerReloadAllBuffers")
 end
 
-M.lspsaga = function()
-    local present, lspsaga = pcall(require, "lspsaga")
+M.trouble = function()
+    local present, trouble = pcall(require, "trouble")
     if not present then
         return
     end
 
-    lspsaga.init_lsp_saga({})
+    trouble.setup({})
 end
 
 M.dictionary = function()

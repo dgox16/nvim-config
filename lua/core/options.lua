@@ -21,7 +21,8 @@ opt.smartcase = true
 opt.mouse = "a"
 
 opt.number = true
-opt.numberwidth = 2
+opt.relativenumber = true
+opt.numberwidth = 1
 opt.ruler = false
 
 opt.signcolumn = "yes"
@@ -40,8 +41,6 @@ opt.undofile = true
 
 opt.timeoutlen = 400
 opt.updatetime = 300
-
-require("impatient").enable_profile()
 
 vim.g.loaded_gzip = 1
 vim.g.loaded_zip = 1
