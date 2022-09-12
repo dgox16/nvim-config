@@ -80,7 +80,7 @@ M.plugins = {
     {
         "williamboman/mason.nvim",
         config = function()
-            require("configs.others").mason()
+            require("configs.lsp.mason")
         end,
     },
 
@@ -162,6 +162,13 @@ M.plugins = {
         tag = "*",
         config = function()
             require("configs.others").surround()
+        end,
+    },
+
+    {
+        "ggandor/leap.nvim",
+        config = function()
+            require("configs.others").leap()
         end,
     },
 

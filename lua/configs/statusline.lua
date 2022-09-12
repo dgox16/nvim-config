@@ -91,8 +91,8 @@ gl.short_line_list = { "startify", "nerdtree", "term", "fugitive", "NvimTree" }
 gl.section.left[1] = {
     ViModeIcon = {
         separator = "  ",
-        separator_highlight = { colors.black, colors.bg_light },
-        highlight = { colors.white, colors.black },
+        separator_highlight = { colors.lavender, colors.bg_light },
+        highlight = { colors.black, colors.lavender },
         provider = function()
             return "   "
         end,
@@ -108,7 +108,7 @@ gl.section.left[2] = {
         highlight = { colors.white, colors.bg_light },
         provider = function()
             local dirname = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-            return " " .. dirname .. " "
+            return "  " .. dirname .. " "
         end,
     },
 }
@@ -170,7 +170,7 @@ gl.section.right[1] = {
         end,
         separator = " ",
         highlight = { colors.lavender, colors.bg },
-        icon = "漣LSP: ",
+        icon = "漣 LSP: ",
     },
 }
 

@@ -4,6 +4,7 @@ if not present then
 end
 
 bufferline.setup({
+    highlights = require("catppuccin.groups.integrations.bufferline").get(),
     options = {
         offsets = {
             {
@@ -15,6 +16,7 @@ bufferline.setup({
         buffer_close_icon = "",
         modified_icon = "",
         close_icon = "",
+        show_close_icon = false,
         left_trunc_marker = "",
         right_trunc_marker = "",
         max_name_length = 14,

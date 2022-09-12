@@ -1,13 +1,5 @@
 local M = {}
 
-M.mason = function()
-    local present, mason = pcall(require, "mason")
-    if not present then
-        return
-    end
-    mason.setup()
-end
-
 M.luasnip = function()
     local present, luasnip = pcall(require, "luasnip")
     if not present then
@@ -38,6 +30,15 @@ M.surround = function()
     end
 
     nvim_surround.setup({})
+end
+
+M.leap = function()
+    local present, leap = pcall(require, "leap")
+    if not present then
+        return
+    end
+
+    leap.set_default_keymaps()
 end
 
 M.gitsigns = function()
