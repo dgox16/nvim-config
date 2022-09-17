@@ -3,6 +3,14 @@ if not present then
     return
 end
 
+local colors = require("catppuccin.palettes").get_palette()
+local ucolors = require("catppuccin.utils.colors")
+local telescope_prompt = ucolors.darken(colors.crust, 0.95, "#000000")
+local telescope_results = ucolors.darken(colors.mantle, 0.95, "#000000")
+local telescope_text = colors.text
+local telescope_prompt_title = colors.yellow
+local telescope_preview_title = colors.green
+
 catppuccin_setting.setup({
     dim_inactive = {
         enabled = false,
@@ -20,7 +28,7 @@ catppuccin_setting.setup({
         conditionals = { "italic" },
         loops = {},
         functions = {},
-        keywords = {},
+        keywords = { "italic" },
         strings = {},
         variables = {},
         numbers = {},
@@ -94,7 +102,34 @@ catppuccin_setting.setup({
         overseer = false,
     },
     color_overrides = {},
-    highlight_overrides = {},
+    highlight_overrides = {
+        all = {
+            LeapBackdrop = { fg = colors.overlay0 },
+            Comment = { fg = colors.overlay0 },
+            TelescopeBorder = { bg = telescope_results, fg = telescope_results },
+            TelescopePromptBorder = { bg = telescope_prompt, fg = telescope_prompt },
+            TelescopePromptCounter = { fg = telescope_text },
+            TelescopePromptNormal = { fg = telescope_text, bg = telescope_prompt },
+            TelescopePromptPrefix = { fg = telescope_prompt_title, bg = telescope_prompt },
+            TelescopePromptTitle = { fg = telescope_prompt, bg = telescope_prompt_title },
+            TelescopePreviewTitle = { fg = telescope_results, bg = telescope_preview_title },
+            TelescopePreviewBorder = {
+                bg = ucolors.darken(telescope_results, 0.95, "#000000"),
+                fg = ucolors.darken(telescope_results, 0.95, "#000000"),
+            },
+            TelescopePreviewNormal = {
+                bg = ucolors.darken(telescope_results, 0.95, "#000000"),
+                fg = telescope_results,
+            },
+            TelescopeResultsTitle = { fg = telescope_results, bg = telescope_preview_title },
+            TelescopeMatching = { fg = telescope_prompt_title },
+            TelescopeNormal = { bg = telescope_results },
+            TelescopeSelection = { bg = telescope_prompt },
+            TelescopeSelectionCaret = { fg = telescope_text },
+            TelescopeResultsNormal = { bg = telescope_results },
+            TelescopeResultsBorder = { bg = telescope_results, fg = telescope_results },
+        },
+    },
 })
 
 vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha

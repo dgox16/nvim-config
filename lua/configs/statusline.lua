@@ -169,6 +169,7 @@ gl.section.right[1] = {
             return true
         end,
         separator = " ",
+        separator_highlight = { colors.lavender, colors.bg },
         highlight = { colors.lavender, colors.bg },
         icon = "漣 LSP: ",
     },
@@ -180,6 +181,7 @@ gl.section.right[2] = {
         separator = "  ",
         condition = condition.check_git_workspace,
         highlight = { colors.teal, colors.bg },
+        separator_highlight = { colors.lavender, colors.bg },
         provider = "GitBranch",
     },
 }

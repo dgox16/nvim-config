@@ -100,28 +100,25 @@ M.plugins = {
         end,
     },
 
-    -- cmp and snippets
-    {
-        "dsznajder/vscode-es7-javascript-react-snippets",
-        run = "yarn install --frozen-lockfile && yarn compile",
-    },
-
     {
         "rafamadriz/friendly-snippets",
         module = { "cmp", "cmp_nvim_lsp" },
     },
+
     {
         "hrsh7th/nvim-cmp",
         config = function()
             require("configs.cmp-settings")
         end,
     },
+
     {
         "uga-rosa/cmp-dictionary",
         config = function()
             require("configs.others").dictionary()
         end,
     },
+
     {
         "L3MON4D3/LuaSnip",
         after = "nvim-cmp",
@@ -157,6 +154,7 @@ M.plugins = {
             require("configs.others").comment()
         end,
     },
+
     {
         "kylechui/nvim-surround",
         tag = "*",
@@ -175,9 +173,9 @@ M.plugins = {
     { "windwp/nvim-ts-autotag" },
 
     {
-        "mhartington/formatter.nvim",
+        "jose-elias-alvarez/null-ls.nvim",
         config = function()
-            require("configs.formatter-settings")
+            require("configs.lsp.null-ls")
         end,
     },
 
@@ -204,6 +202,7 @@ M.plugins = {
     },
 
     { "lambdalisue/suda.vim" },
+
     { "dstein64/vim-startuptime" },
 }
 

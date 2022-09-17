@@ -1,8 +1,4 @@
-local present, impatient = pcall(require, "impatient")
-
-if present then
-    impatient.enable_profile()
-end
+pcall(require, "impatient")
 
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"

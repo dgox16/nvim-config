@@ -39,9 +39,11 @@ keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 -- FZF
 keymap("n", "<Leader>ff", "<cmd>Telescope find_files<CR>", opts)
-keymap("n", "<Leader>fw", "<cmd> Telescope live_grep <CR>", opts)
-keymap("n", "<Leader>fb", "<cmd> Telescope buffers <CR>", opts)
-keymap("n", "<Leader>ft", "<cmd> Telescope treesitter<CR>", opts)
+keymap("n", "<Leader>fw", "<cmd>Telescope live_grep <CR>", opts)
+keymap("n", "<Leader>fb", "<cmd>Telescope buffers <CR>", opts)
+keymap("n", "<Leader>ft", "<cmd>Telescope treesitter<CR>", opts)
+-- Format
+keymap("n", "<Leader>m", ":NullFormat<CR>", opts)
 -- Buscar y remplazar
 keymap("n", "<Leader>r", ":%s///g<Left><Left><Left>", { noremap = true, silent = false })
 -- Ejecutar Python
@@ -77,7 +79,8 @@ keymap("i", "<C-h>", "<Left>", opts)
 keymap("i", "<C-l>", "<Right>", opts)
 keymap("i", "<C-j>", "<Down>", opts)
 keymap("i", "<C-k>", "<Up>", opts)
-
+-- Remove highlights
+keymap("n", "<CR>", ":noh<CR><CR>", opts)
 -- MODO VISUAL
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
