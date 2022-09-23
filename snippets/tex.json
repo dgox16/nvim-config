@@ -34,5 +34,13 @@
             "\\end{figure}"
         ],
         "description": "Inserta dos figuras en linea"
+    },
+    "Code": {
+        "prefix": "code",
+        "body": ["\\begin{lstlisting}", "$1", "\\end{lstlisting}"]
+    },
+    "Code in line": {
+        "prefix": "linecode",
+        "body": ["\\lstinline{$1}"]
     }
 }

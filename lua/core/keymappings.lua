@@ -45,7 +45,7 @@ keymap("n", "<Leader>ft", "<cmd>Telescope treesitter<CR>", opts)
 -- Format
 keymap("n", "<Leader>m", ":NullFormat<CR>", opts)
 -- Buscar y remplazar
-keymap("n", "<Leader>r", ":%s///g<Left><Left><Left>", { noremap = true, silent = false })
+keymap("n", "<Leader>r", ":%s/\\<<C-r><C-w>\\>//gI<Left><Left><Left>", { noremap = true, silent = false })
 -- Ejecutar Python
 keymap("n", "py", ":!python %<CR>", opts)
 -- Punto y coma al final

@@ -94,6 +94,15 @@ M.trouble = function()
     trouble.setup({})
 end
 
+M.escape = function()
+    local present, escape = pcall(require, "better_escape")
+    if not present then
+        return
+    end
+
+    escape.setup({ mapping = { "jk" } })
+end
+
 M.dictionary = function()
     local present, dictionary = pcall(require, "cmp_dictionary")
     if not present then

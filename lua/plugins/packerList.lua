@@ -170,6 +170,12 @@ M.plugins = {
         end,
     },
 
+    {
+        "max397574/better-escape.nvim",
+        config = function()
+            require("configs.others").escape()
+        end,
+    },
     { "windwp/nvim-ts-autotag" },
 
     {
