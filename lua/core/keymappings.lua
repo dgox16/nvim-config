@@ -42,6 +42,7 @@ keymap("n", "<Leader>ff", "<cmd>Telescope find_files<CR>", opts)
 keymap("n", "<Leader>fw", "<cmd>Telescope live_grep <CR>", opts)
 keymap("n", "<Leader>fb", "<cmd>Telescope buffers <CR>", opts)
 keymap("n", "<Leader>ft", "<cmd>Telescope treesitter<CR>", opts)
+keymap("n", "<Leader>fs", "<cmd>Telescope current_buffer_fuzzy_find case_mode=ignore_case<CR>", opts)
 -- Format
 keymap("n", "<Leader>m", ":NullFormat<CR>", opts)
 -- Buscar y remplazar

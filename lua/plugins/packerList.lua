@@ -176,6 +176,7 @@ M.plugins = {
             require("configs.others").escape()
         end,
     },
+
     { "windwp/nvim-ts-autotag" },
 
     {

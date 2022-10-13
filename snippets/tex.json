@@ -20,7 +20,7 @@
     "Figura doble en linea": {
         "prefix": "doublefig",
         "body": [
-            "\\begin{figure}[!htb]",
+            "\\begin{figure}[H]",
             "\t\\begin{center}",
             "\t\t\\subfigure[$5.]{",
             "\t\t\t\\includegraphics[width=0.45\\textwidth]{figures/$1}",

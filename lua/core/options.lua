@@ -7,7 +7,6 @@ if g.vim_version < 8 then
     g.do_filetype_lua = 1
 end
 
-opt.clipboard = "unnamedplus"
 opt.cursorline = true
 
 opt.expandtab = true
