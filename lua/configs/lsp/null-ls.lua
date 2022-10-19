@@ -1,19 +1,29 @@
 local null_ls = require("null-ls")
 
 local formatting = null_ls.builtins.formatting
-local diagnostics = null_ls.builtins.diagnostics
--- local latex = '-y="defaultIndent: ' '"'
+
+local lsp_formatting = function(bufnr)
+    vim.lsp.buf.format({
+        filter = function(client)
+            return client.name == "null-ls"
+        end,
+        bufnr = bufnr,
+    })
+end
+
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
 null_ls.setup({
     on_attach = function(client, bufnr)
-        local bufcmd = vim.api.nvim_buf_create_user_command
-
-        local format = function()
-            local params = vim.lsp.util.make_formatting_params({})
-            client.request("textDocument/formatting", params, nil, bufnr)
-        end
-
-        if client.server_capabilities.documentFormattingProvider then
-            bufcmd(bufnr, "NullFormat", format, { desc = "Format using null-ls" })
+        if client.supports_method("textDocument/formatting") then
+            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                group = augroup,
+                buffer = bufnr,
+                callback = function()
+                    lsp_formatting(bufnr)
+                end,
+            })
         end
     end,
 
@@ -24,6 +34,5 @@ null_ls.setup({
         formatting.black,
         formatting.clang_format,
         formatting.latexindent,
-        diagnostics.eslint,
     },
 })
