@@ -1,10 +1,8 @@
 local M = {}
 
 M.plugins = {
-    { "lewis6991/impatient.nvim" },
 
     { "nvim-lua/plenary.nvim" },
-    { "wbthomason/packer.nvim" },
 
     -- UI
     {

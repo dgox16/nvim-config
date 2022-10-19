@@ -64,6 +64,8 @@ keymap("n", "<Down>", "(v:count == 0 ? 'gj' : 'j')", { silent = true, expr = tru
 keymap("n", "<Up>", "(v:count == 0 ? 'gk' : 'k')", { silent = true, expr = true })
 
 keymap("n", "<leader>xx", "<cmd>TroubleToggle<cr>", opts)
+-- Remove highlights
+keymap("n", "<CR>", ":noh<CR><CR>", opts)
 -- MODO INSERTAR
 keymap("i", "<C-d>", "<C-O>dw", opts)
 
@@ -77,8 +79,8 @@ keymap("i", "<C-h>", "<Left>", opts)
 keymap("i", "<C-l>", "<Right>", opts)
 keymap("i", "<C-j>", "<Down>", opts)
 keymap("i", "<C-k>", "<Up>", opts)
--- Remove highlights
-keymap("n", "<CR>", ":noh<CR><CR>", opts)
+
+keymap("i", "<C-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 -- MODO VISUAL
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
