@@ -40,7 +40,7 @@ opt.undofile = true
 opt.timeoutlen = 400
 opt.updatetime = 300
 
-opt.cmdheight = 0
+-- opt.cmdheight = 0
 opt.laststatus = 3
 
 -- Disable builtins to improve startup times

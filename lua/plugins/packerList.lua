@@ -139,12 +139,12 @@ M.plugins = {
         end,
     },
 
-    -- {
-    --     "folke/trouble.nvim",
-    --     config = function()
-    --         require("configs.others").trouble()
-    --     end,
-    -- },
+    {
+        "folke/trouble.nvim",
+        config = function()
+            require("configs.others").trouble()
+        end,
+    },
 
     {
         "numToStr/Comment.nvim",

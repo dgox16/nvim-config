@@ -96,7 +96,7 @@ lspconfig.texlab.setup({
     root_dir = require("configs.lsp.servers.texlab").root_dir,
 })
 
-for _, server in ipairs({ "bashls", "cssls", "clangd", "html", "pyright", "rust_analyzer" }) do
+for _, server in ipairs({ "bashls", "cssls", "clangd", "html", "pyright", "rust_analyzer", "intelephense" }) do
     lspconfig[server].setup({
         on_attach = on_attach,
         capabilities = capabilities,
@@ -104,4 +104,4 @@ for _, server in ipairs({ "bashls", "cssls", "clangd", "html", "pyright", "rust_
     })
 end
 
-vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]])
+-- vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]])

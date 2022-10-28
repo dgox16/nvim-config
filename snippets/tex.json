@@ -42,5 +42,17 @@
     "Code in line": {
         "prefix": "linecode",
         "body": ["\\lstinline{$1}"]
+    },
+    "Math in line": {
+        "prefix": "mk",
+        "body": ["$$1$"]
+    },
+    "Math Display": {
+        "prefix": "dm",
+        "body": ["\\[", "\t$1", "\\]"]
+    },
+    "Fraction": {
+        "prefix": "fr",
+        "body": ["\\frac{$1}{$2}"]
     }
 }
