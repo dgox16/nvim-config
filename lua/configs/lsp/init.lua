@@ -34,7 +34,7 @@ local handlers = {
 }
 
 local function on_attach(client, bufnr)
-    vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+    vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -96,12 +96,10 @@ lspconfig.texlab.setup({
     root_dir = require("configs.lsp.servers.texlab").root_dir,
 })
 
-for _, server in ipairs({ "bashls", "cssls", "clangd", "html", "pyright", "rust_analyzer", "intelephense" }) do
+for _, server in ipairs({ "bashls", "cssls", "clangd", "html", "pyright", "rust_analyzer" }) do
     lspconfig[server].setup({
         on_attach = on_attach,
         capabilities = capabilities,
         handlers = handlers,
     })
 end
-
--- vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]])

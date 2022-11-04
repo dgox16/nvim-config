@@ -111,7 +111,7 @@ M.dictionary = function()
 
     dictionary.setup({
         dic = {
-            ["javascript, javascriptreact, html"] = { "~/.config/nvim/dict/bootstrap.dic" },
+            ["html"] = { "~/.config/nvim/dict/bootstrap.dic" },
         },
         async = false,
         capacity = 5,

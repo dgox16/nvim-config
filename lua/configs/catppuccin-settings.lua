@@ -117,34 +117,33 @@ catppuccin_setting.setup({
                 LspDiagnosticsVirtualTextHint = { fg = cp.rosewater },
                 LspDiagnosticsUnderlineHint = { sp = cp.rosewater },
 
-                -- For treesitter.
                 ["@field"] = { fg = cp.rosewater },
                 ["@property"] = { fg = cp.yellow },
 
-                ["@include"] = { fg = cp.teal },
+                ["@include"] = { fg = cp.mauve },
                 ["@operator"] = { fg = cp.sky },
-                ["@keyword.operator"] = { fg = cp.sky },
+                ["@keyword.operator"] = { fg = cp.mauve },
                 ["@punctuation.special"] = { fg = cp.maroon },
 
                 -- ["@float"] = { fg = cp.peach },
-                -- ["@number"] = { fg = cp.peach },
+                ["@number"] = { fg = cp.peach },
                 -- ["@boolean"] = { fg = cp.peach },
 
                 ["@constructor"] = { fg = cp.lavender },
-                -- ["@constant"] = { fg = cp.peach },
+                ["@constant"] = { fg = cp.peach },
                 -- ["@conditional"] = { fg = cp.mauve },
                 -- ["@repeat"] = { fg = cp.mauve },
                 ["@exception"] = { fg = cp.peach },
 
                 ["@constant.builtin"] = { fg = cp.lavender },
                 -- ["@function.builtin"] = { fg = cp.peach, style = { "italic" } },
-                -- ["@type.builtin"] = { fg = cp.yellow, style = { "italic" } },
+                ["@type.type"] = { fg = cp.peach, style = { "italic" } },
                 ["@variable.builtin"] = { fg = cp.red, style = { "italic" } },
 
                 -- ["@function"] = { fg = cp.blue },
                 ["@function.macro"] = { fg = cp.red, style = {} },
-                ["@parameter"] = { fg = cp.rosewater },
-                ["@keyword.function"] = { fg = cp.maroon },
+                ["@parameter"] = { fg = cp.red },
+                ["@keyword.function"] = { fg = cp.mauve },
                 ["@keyword"] = { fg = cp.red },
                 ["@keyword.return"] = { fg = cp.pink, style = {} },
 
@@ -155,7 +154,7 @@ catppuccin_setting.setup({
 
                 -- ["@label"] = { fg = cp.blue },
                 ["@method"] = { style = { "italic" } },
-                ["@namespace"] = { fg = cp.rosewater, style = {} },
+                ["@namespace"] = { fg = cp.yellow, style = {} },
 
                 ["@punctuation.delimiter"] = { fg = cp.teal },
                 ["@punctuation.bracket"] = { fg = cp.overlay2 },
@@ -164,7 +163,7 @@ catppuccin_setting.setup({
                 -- ["@type"] = { fg = cp.yellow },
                 ["@variable"] = { fg = cp.text },
                 ["@tag.attribute"] = { fg = cp.mauve, style = { "italic" } },
-                ["@tag"] = { fg = cp.peach },
+                ["@tag"] = { fg = cp.green },
                 ["@tag.delimiter"] = { fg = cp.maroon },
                 ["@text"] = { fg = cp.text },
 

@@ -199,6 +199,13 @@ M.plugins = {
     { "stevearc/dressing.nvim" },
 
     {
+        "NTBBloodbath/rest.nvim",
+        config = function()
+            require("configs.rest")
+        end,
+    },
+
+    {
         "akinsho/toggleterm.nvim",
         tag = "v2.*",
         config = function()

@@ -34,6 +34,7 @@ null_ls.setup({
         formatting.rustfmt,
         formatting.isort,
         diagnostics.flake8,
+        -- diagnostics.eslint,
         formatting.black,
         formatting.clang_format,
         formatting.latexindent,

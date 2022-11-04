@@ -27,9 +27,9 @@ cmp.setup({
             winhighlight = "Normal:CmpPmenu,FloatBorder:CmpBorder,CursorLine:PmenuSel,Search:None",
         },
     },
-    experimental = {
-        ghost_text = true,
-    },
+    -- experimental = {
+    --     ghost_text = true,
+    -- },
     mapping = cmp.mapping.preset.insert({
         ["<C-p>"] = cmp.mapping.select_prev_item(),
         ["<C-n>"] = cmp.mapping.select_next_item(),

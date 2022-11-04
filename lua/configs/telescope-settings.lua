@@ -3,6 +3,7 @@ require("telescope").setup({
         prompt_prefix = "🔍 ",
         file_ignore_patterns = {
             ".git/",
+            "node_modules/",
         },
         dynamic_preview_title = true,
         vimgrep_arguments = {
