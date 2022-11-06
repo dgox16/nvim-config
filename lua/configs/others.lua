@@ -36,23 +36,6 @@ M.luasnip = function()
     luasnip.filetype_extend("javascript", { "javascriptreact" })
 end
 
-M.comment = function()
-    local present, comment = pcall(require, "Comment")
-    if not present then
-        return
-    end
-    comment.setup()
-end
-
-M.surround = function()
-    local present, nvim_surround = pcall(require, "nvim-surround")
-    if not present then
-        return
-    end
-
-    nvim_surround.setup({})
-end
-
 M.leap = function()
     local present, leap = pcall(require, "leap")
     if not present then

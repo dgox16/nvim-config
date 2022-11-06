@@ -5,137 +5,206 @@ M.plugins = {
     { "nvim-lua/plenary.nvim" },
 
     -- UI
+    { "kyazdani42/nvim-web-devicons" },
+
     {
         "catppuccin/nvim",
         as = "catppuccin",
         run = ":CatppuccinCompile",
         config = function()
-            require("configs.catppuccin-settings")
+            require("configs.ui.catppuccin")
         end,
     },
 
-    { "kyazdani42/nvim-web-devicons" },
+    {
+        "hoob3rt/lualine.nvim",
+        after = "nvim-lspconfig",
+        config = function()
+            require("configs.ui.lualine")
+        end,
+    },
+
+    {
+        "goolord/alpha-nvim",
+        event = "BufWinEnter",
+        config = function()
+            require("configs.ui.alpha")
+        end,
+    },
 
     {
         "kyazdani42/nvim-tree.lua",
         config = function()
-            require("configs.ntree-settings")
+            require("configs.ui.nvim_tree")
         end,
     },
 
     {
-        "glepnir/galaxyline.nvim",
-        branch = "main",
+        "lewis6991/gitsigns.nvim",
+        event = { "BufReadPost", "BufNewFile" },
         config = function()
-            require("configs.statusline")
+            require("configs.ui.gitsigns")
         end,
-        requires = { "kyazdani42/nvim-web-devicons", opt = true },
+    },
+
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        event = "BufReadPost",
+        setup = function()
+            require("configs.ui.indent_blankline")
+        end,
     },
 
     {
         "akinsho/bufferline.nvim",
+        event = "BufReadPost",
         tag = "*",
         config = function()
-            require("configs.bufferline-settings")
-        end,
-    },
-
-    -- Faster visualization
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        setup = function()
-            require("configs.others").blankline()
+            require("configs.ui.bufferline")
         end,
     },
 
     {
         "norcalli/nvim-colorizer.lua",
+        event = "BufReadPost",
         config = function()
-            require("configs.others").colorizer()
+            require("configs.ui.colorizer")
         end,
     },
 
+    -- Editor
     {
-        "p00f/nvim-ts-rainbow",
+        "numToStr/Comment.nvim",
+        event = "BufReadPost",
+        config = function()
+            require("configs.editor.comment")
+        end,
     },
 
     {
         "nvim-treesitter/nvim-treesitter",
+        event = "BufReadPost",
         config = function()
-            require("configs.treesitter-settings")
+            require("configs.editor.treesitter")
         end,
         run = ":TSUpdate",
     },
 
+    { "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" },
+
     {
-        "lewis6991/gitsigns.nvim",
+        "p00f/nvim-ts-rainbow",
+        after = "nvim-treesitter",
+    },
+
+    {
+        "kylechui/nvim-surround",
+        tag = "*",
+        event = "BufReadPost",
         config = function()
-            require("configs.others").gitsigns()
+            require("configs.editor.surround")
         end,
     },
 
-    -- LSP
     {
-        "williamboman/mason.nvim",
+        "phaazon/hop.nvim",
+        event = "BufReadPost",
         config = function()
-            require("configs.lsp.mason")
+            require("configs.editor.hop")
         end,
     },
 
-    { "barreiroleo/ltex-extra.nvim" },
+    {
+        "max397574/better-escape.nvim",
+        event = "InsertEnter",
+        config = function()
+            require("configs.editor.better_escape")
+        end,
+    },
+
+    { "windwp/nvim-ts-autotag", after = "nvim-treesitter" },
+
+    {
+        "akinsho/toggleterm.nvim",
+        cmd = "ToggleTerm",
+        tag = "v2.*",
+        config = function()
+            require("configs.editor.toggleterm")
+        end,
+    },
+
+    { "famiu/bufdelete.nvim", cmd = { "Bdelete", "Bwipeout", "Bdelete!", "Bwipeout!" } },
+
+    -- Completion
+    { "barreiroleo/ltex-extra.nvim", event = "BufReadPre" },
 
     {
         "neovim/nvim-lspconfig",
+        event = "BufReadPre",
         config = function()
-            require("configs.lsp")
+            require("configs.completion.lsp")
         end,
     },
 
     {
-        "onsails/lspkind-nvim",
+        "williamboman/mason.nvim",
         config = function()
-            require("configs.lspkind-settings")
+            require("configs.completion.mason")
         end,
     },
 
     {
-        "rafamadriz/friendly-snippets",
-        module = { "cmp", "cmp_nvim_lsp" },
+        "glepnir/lspsaga.nvim",
+        event = "LspAttach",
+        config = function()
+            require("configs.completion.lspsaga")
+        end,
     },
+    { "ray-x/lsp_signature.nvim", after = "nvim-lspconfig" },
 
     {
         "hrsh7th/nvim-cmp",
+        event = "InsertEnter",
         config = function()
-            require("configs.cmp-settings")
+            require("configs.completion.cmp")
         end,
-    },
-
-    {
-        "uga-rosa/cmp-dictionary",
-        config = function()
-            require("configs.others").dictionary()
-        end,
+        requires = {
+            { "onsails/lspkind.nvim" },
+            { "saadparwaiz1/cmp_luasnip", after = "LuaSnip" },
+            { "hrsh7th/cmp-nvim-lsp", after = "cmp_luasnip" },
+            { "hrsh7th/cmp-nvim-lua", after = "cmp-nvim-lsp" },
+            { "hrsh7th/cmp-path", after = "cmp-nvim-lua" },
+            { "hrsh7th/cmp-buffer", after = "cmp-path" },
+            { "hrsh7th/cmp-cmdline", after = "cmp-buffer" },
+        },
     },
 
     {
         "L3MON4D3/LuaSnip",
         after = "nvim-cmp",
         config = function()
-            require("configs.others").luasnip()
+            require("configs.completion.luasnip")
         end,
     },
 
-    { "saadparwaiz1/cmp_luasnip" },
-    { "hrsh7th/cmp-nvim-lua" },
-    { "hrsh7th/cmp-nvim-lsp" },
-    { "hrsh7th/cmp-buffer" },
-    { "hrsh7th/cmp-path" },
-    { "hrsh7th/cmp-cmdline" },
-
     {
         "windwp/nvim-autopairs",
+        after = "nvim-cmp",
         config = function()
-            require("configs.autopairs-settings")
+            require("configs.completion.autopairs")
+        end,
+    },
+
+    {
+        "rafamadriz/friendly-snippets",
+        after = "nvim-cmp",
+        module = { "cmp", "cmp_nvim_lsp" },
+    },
+
+    {
+        "jose-elias-alvarez/null-ls.nvim",
+        config = function()
+            require("configs.completion.null_ls")
         end,
     },
 
@@ -143,44 +212,6 @@ M.plugins = {
         "folke/trouble.nvim",
         config = function()
             require("configs.others").trouble()
-        end,
-    },
-
-    {
-        "numToStr/Comment.nvim",
-        config = function()
-            require("configs.others").comment()
-        end,
-    },
-
-    {
-        "kylechui/nvim-surround",
-        tag = "*",
-        config = function()
-            require("configs.others").surround()
-        end,
-    },
-
-    {
-        "ggandor/leap.nvim",
-        config = function()
-            require("configs.others").leap()
-        end,
-    },
-
-    {
-        "max397574/better-escape.nvim",
-        config = function()
-            require("configs.others").escape()
-        end,
-    },
-
-    { "windwp/nvim-ts-autotag" },
-
-    {
-        "jose-elias-alvarez/null-ls.nvim",
-        config = function()
-            require("configs.lsp.null-ls")
         end,
     },
 
@@ -202,14 +233,6 @@ M.plugins = {
         "NTBBloodbath/rest.nvim",
         config = function()
             require("configs.rest")
-        end,
-    },
-
-    {
-        "akinsho/toggleterm.nvim",
-        tag = "v2.*",
-        config = function()
-            require("configs.toggleterm-settings")
         end,
     },
 

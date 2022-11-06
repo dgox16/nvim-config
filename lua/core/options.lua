@@ -1,94 +1,103 @@
-local opt = vim.opt
-local g = vim.g
-g.vim_version = vim.version().minor
+local global_local = {
+    termguicolors = true,
+    errorbells = true,
+    visualbell = true,
+    hidden = true,
+    fileformats = "unix,mac,dos",
+    magic = true,
+    virtualedit = "block",
+    encoding = "utf-8",
+    viewoptions = "folds,cursor,curdir,slash,unix",
+    sessionoptions = "curdir,help,tabpages,winsize",
+    wildignorecase = true,
+    wildignore = ".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**",
+    backup = false,
 
-if g.vim_version < 8 then
-    g.did_load_filetypes = 0
-    g.do_filetype_lua = 1
-end
+    writebackup = false,
+    swapfile = false,
+    history = 2000,
+    shada = "!,'300,<50,@100,s10,h",
+    backupskip = "/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*,/private/var/*,.vault.vim",
+    smarttab = true,
+    shiftround = true,
+    timeout = true,
+    ttimeout = true,
+    timeoutlen = 500,
+    ttimeoutlen = 0,
+    updatetime = 100,
+    redrawtime = 1500,
+    ignorecase = true,
+    smartcase = true,
+    infercase = true,
+    incsearch = true,
+    wrapscan = true,
+    complete = ".,w,b,k",
+    inccommand = "nosplit",
+    grepformat = "%f:%l:%c:%m",
+    grepprg = "rg --hidden --vimgrep --smart-case --",
+    breakat = [[\ \	;:,!?]],
+    startofline = false,
+    whichwrap = "h,l,<,>,[,],~",
+    splitbelow = true,
+    splitright = true,
+    switchbuf = "useopen",
+    backspace = "indent,eol,start",
+    diffopt = "filler,iwhite,internal,algorithm:patience",
+    completeopt = "menuone,noselect",
+    jumpoptions = "stack",
+    showmode = false,
+    shortmess = "aoOTIcF",
+    scrolloff = 2,
+    sidescrolloff = 5,
+    mousescroll = "ver:3,hor:6",
+    foldlevelstart = 99,
+    ruler = true,
+    cursorline = true,
 
-opt.cursorline = true
+    cursorcolumn = true,
+    list = true,
+    showtabline = 2,
+    winwidth = 30,
+    winminwidth = 10,
+    pumheight = 15,
+    helpheight = 12,
+    previewheight = 12,
+    showcmd = false,
+    cmdheight = 1, -- 0, 1, 2
+    cmdwinheight = 5,
+    equalalways = false,
+    laststatus = 2,
+    display = "lastline",
+    showbreak = "↳  ",
+    listchars = "tab:»·,nbsp:+,trail:·,extends:→,precedes:←",
+    -- pumblend = 10,
 
-opt.expandtab = true
-opt.shiftwidth = 4
-opt.smartindent = true
-opt.tabstop = 4
-opt.softtabstop = 4
+    -- winblend = 10,
+    autoread = true,
+    autowrite = true,
 
-opt.smartcase = true
-opt.smartcase = true
-opt.mouse = "a"
+    undofile = true,
+    synmaxcol = 2500,
+    formatoptions = "1jcroql",
+    expandtab = true,
+    autoindent = true,
+    tabstop = 4,
+    shiftwidth = 4,
+    softtabstop = 4,
+    breakindentopt = "shift:2,min:20",
+    wrap = false,
+    linebreak = true,
 
-opt.number = true
-opt.relativenumber = true
-opt.numberwidth = 1
-opt.ruler = false
+    number = true,
+    relativenumber = true,
 
-opt.signcolumn = "yes"
-opt.splitbelow = true
-opt.splitright = true
-opt.completeopt = "menu,menuone,noselect"
-opt.swapfile = false
-opt.fileencoding = "utf-8"
-opt.termguicolors = true
-opt.hidden = true
-opt.wrap = true
-opt.number = true
-opt.linebreak = true
-opt.undofile = true
+    foldenable = true,
 
-opt.timeoutlen = 400
-opt.updatetime = 300
-
--- opt.cmdheight = 0
-opt.laststatus = 3
-
--- Disable builtins to improve startup times
-local default_plugins = {
-    "2html_plugin",
-    "getscript",
-    "getscriptPlugin",
-    "gzip",
-    "logipat",
-    "netrw",
-    "netrwPlugin",
-    "netrwSettings",
-    "netrwFileHandlers",
-    "matchit",
-    "matchparen",
-    "tar",
-    "tarPlugin",
-    "rrhelper",
-    "spellfile_plugin",
-    "vimball",
-    "vimballPlugin",
-    "zip",
-    "zipPlugin",
-    "tutor",
-    "rplugin",
-    "syntax",
-    "synmenu",
-    "optwin",
-    "compiler",
-    "bugreport",
-    "ftplugin",
-    "archlinux",
-
-    "fzf",
+    signcolumn = "yes",
+    conceallevel = 0,
+    concealcursor = "niv",
 }
 
-for _, plugin in pairs(default_plugins) do
-    g["loaded_" .. plugin] = 1
-end
-
--- Disable neovim default providers
-local default_providers = {
-    "node",
-    "perl",
-    "python3",
-    "ruby",
-}
-
-for _, provider in ipairs(default_providers) do
-    g["loaded_" .. provider .. "_provider"] = 0
+for name, value in pairs(global_local) do
+    vim.o[name] = value
 end

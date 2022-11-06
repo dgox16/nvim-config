@@ -4,9 +4,6 @@ local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 
 --Rekeymap space as leader key
-keymap("", "<Space>", "<Nop>", opts)
-vim.g.maplocalleader = " "
-vim.g.mapleader = " "
 
 -- NORMAL MODE
 -- Redimensionar
@@ -26,12 +23,16 @@ keymap("n", "<Leader>q", ":q<CR>", opts)
 keymap("n", "<Leader>n", ":NvimTreeToggle<CR>", opts)
 -- Manejo de Buffers
 keymap("n", "<M-d>", ":bd<CR>", opts)
-keymap("n", "<M-h>", ":bp<CR>", opts)
-keymap("n", "<M-l>", ":bn<CR>", opts)
+keymap("n", "<M-h>", ":BufferLineCycleNext<CR>", opts)
+keymap("n", "<M-l>", ":BufferLineCyclePrev<CR>", opts)
+keymap("n", "<M-g>", ":BufferLinePick<CR>", opts)
+
+keymap("n", "<Leader>ps", ":PackerSync<CR>", opts)
 -- LSP
 keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
 keymap("n", "<leader>c", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 keymap("n", "g{", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
+keymap("n", "<M-l>", ":BufferLineCyclePrev<CR>", opts)
 keymap("n", "g}", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 keymap("n", "<C-k>", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)

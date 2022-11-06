@@ -9,8 +9,8 @@ local ucolors = require("catppuccin.utils.colors")
 local telescope_prompt = ucolors.darken(colors.crust, 0.95, "#000000")
 local telescope_results = ucolors.darken(colors.mantle, 0.95, "#000000")
 local telescope_text = colors.text
-local telescope_prompt_title = colors.yellow
-local telescope_preview_title = colors.green
+local telescope_prompt_title = colors.pink
+local telescope_preview_title = colors.teal
 
 catppuccin_setting.setup({
     flavour = "mocha", -- Can be one of: latte, frappe, macchiato, mocha
@@ -72,12 +72,11 @@ catppuccin_setting.setup({
         markdown = true,
         ts_rainbow = true,
     },
-    color_overrides = {},
     highlight_overrides = {
         mocha = function(cp)
             return {
                 LeapBackdrop = { fg = colors.overlay0 },
-                Comment = { fg = colors.overlay0, style = { "italic" } },
+                Comment = { fg = colors.overlay1, style = { "italic" } },
                 TelescopeBorder = { bg = telescope_results, fg = telescope_results },
                 TelescopePromptBorder = { bg = telescope_prompt, fg = telescope_prompt },
                 TelescopePromptCounter = { fg = telescope_text },
@@ -102,6 +101,7 @@ catppuccin_setting.setup({
                 TelescopeResultsBorder = { bg = telescope_results, fg = telescope_results },
                 -- For base configs.
                 CursorLineNr = { fg = cp.green },
+                LineNr = { fg = cp.overlay2 },
                 Search = { bg = cp.surface1, fg = cp.pink, style = { "bold" } },
                 IncSearch = { bg = cp.pink, fg = cp.surface1 },
 
@@ -117,90 +117,90 @@ catppuccin_setting.setup({
                 LspDiagnosticsVirtualTextHint = { fg = cp.rosewater },
                 LspDiagnosticsUnderlineHint = { sp = cp.rosewater },
 
-                ["@field"] = { fg = cp.rosewater },
-                ["@property"] = { fg = cp.yellow },
-
-                ["@include"] = { fg = cp.mauve },
-                ["@operator"] = { fg = cp.sky },
-                ["@keyword.operator"] = { fg = cp.mauve },
-                ["@punctuation.special"] = { fg = cp.maroon },
-
-                -- ["@float"] = { fg = cp.peach },
-                ["@number"] = { fg = cp.peach },
-                -- ["@boolean"] = { fg = cp.peach },
-
-                ["@constructor"] = { fg = cp.lavender },
-                ["@constant"] = { fg = cp.peach },
-                -- ["@conditional"] = { fg = cp.mauve },
-                -- ["@repeat"] = { fg = cp.mauve },
-                ["@exception"] = { fg = cp.peach },
-
-                ["@constant.builtin"] = { fg = cp.lavender },
-                -- ["@function.builtin"] = { fg = cp.peach, style = { "italic" } },
-                ["@type.type"] = { fg = cp.peach, style = { "italic" } },
-                ["@variable.builtin"] = { fg = cp.red, style = { "italic" } },
-
-                -- ["@function"] = { fg = cp.blue },
-                ["@function.macro"] = { fg = cp.red, style = {} },
-                ["@parameter"] = { fg = cp.red },
-                ["@keyword.function"] = { fg = cp.mauve },
-                ["@keyword"] = { fg = cp.red },
-                ["@keyword.return"] = { fg = cp.pink, style = {} },
-
-                -- ["@text.note"] = { fg = cp.base, bg = cp.blue },
-                -- ["@text.warning"] = { fg = cp.base, bg = cp.yellow },
-                -- ["@text.danger"] = { fg = cp.base, bg = cp.red },
-                -- ["@constant.macro"] = { fg = cp.mauve },
-
-                -- ["@label"] = { fg = cp.blue },
-                ["@method"] = { style = { "italic" } },
-                ["@namespace"] = { fg = cp.yellow, style = {} },
-
-                ["@punctuation.delimiter"] = { fg = cp.teal },
-                ["@punctuation.bracket"] = { fg = cp.overlay2 },
-                -- ["@string"] = { fg = cp.green },
-                -- ["@string.regex"] = { fg = cp.peach },
-                -- ["@type"] = { fg = cp.yellow },
-                ["@variable"] = { fg = cp.text },
-                ["@tag.attribute"] = { fg = cp.mauve, style = { "italic" } },
-                ["@tag"] = { fg = cp.green },
-                ["@tag.delimiter"] = { fg = cp.maroon },
-                ["@text"] = { fg = cp.text },
-
-                -- ["@text.uri"] = { fg = cp.rosewater, style = { "italic", "underline" } },
-                -- ["@text.literal"] = { fg = cp.teal, style = { "italic" } },
-                -- ["@text.reference"] = { fg = cp.lavender, style = { "bold" } },
-                -- ["@text.title"] = { fg = cp.blue, style = { "bold" } },
-                -- ["@text.emphasis"] = { fg = cp.maroon, style = { "italic" } },
-                -- ["@text.strong"] = { fg = cp.maroon, style = { "bold" } },
-                -- ["@string.escape"] = { fg = cp.pink },
-
-                -- ["@property.toml"] = { fg = cp.blue },
-                -- ["@field.yaml"] = { fg = cp.blue },
-
-                -- ["@label.json"] = { fg = cp.blue },
-
-                ["@function.builtin.bash"] = { fg = cp.red, style = { "italic" } },
-                ["@parameter.bash"] = { fg = cp.yellow, style = { "italic" } },
-
-                ["@field.lua"] = { fg = cp.lavender },
-                ["@constructor.lua"] = { fg = cp.flamingo },
-
-                ["@constant.java"] = { fg = cp.teal },
-
-                ["@property.typescript"] = { fg = cp.lavender, style = { "italic" } },
-                -- ["@constructor.typescript"] = { fg = cp.lavender },
-
-                -- ["@constructor.tsx"] = { fg = cp.lavender },
-
+                -- ["@field"] = { fg = cp.rosewater },
+                -- ["@property"] = { fg = cp.yellow },
+                --
+                -- ["@include"] = { fg = cp.mauve },
+                -- ["@operator"] = { fg = cp.sky },
+                -- ["@keyword.operator"] = { fg = cp.mauve },
+                -- ["@punctuation.special"] = { fg = cp.maroon },
+                --
+                -- -- ["@float"] = { fg = cp.peach },
+                -- ["@number"] = { fg = cp.peach },
+                -- -- ["@boolean"] = { fg = cp.peach },
+                --
+                -- ["@constructor"] = { fg = cp.lavender },
+                -- ["@constant"] = { fg = cp.peach },
+                -- -- ["@conditional"] = { fg = cp.mauve },
+                -- -- ["@repeat"] = { fg = cp.mauve },
+                -- ["@exception"] = { fg = cp.peach },
+                --
+                -- ["@constant.builtin"] = { fg = cp.lavender },
+                -- -- ["@function.builtin"] = { fg = cp.peach, style = { "italic" } },
+                -- ["@type.type"] = { fg = cp.peach, style = { "italic" } },
+                -- ["@variable.builtin"] = { fg = cp.red, style = { "italic" } },
+                --
+                -- -- ["@function"] = { fg = cp.blue },
+                -- ["@function.macro"] = { fg = cp.red, style = {} },
+                -- ["@parameter"] = { fg = cp.red },
+                -- ["@keyword.function"] = { fg = cp.mauve },
+                -- ["@keyword"] = { fg = cp.red },
+                -- ["@keyword.return"] = { fg = cp.pink, style = {} },
+                --
+                -- -- ["@text.note"] = { fg = cp.base, bg = cp.blue },
+                -- -- ["@text.warning"] = { fg = cp.base, bg = cp.yellow },
+                -- -- ["@text.danger"] = { fg = cp.base, bg = cp.red },
+                -- -- ["@constant.macro"] = { fg = cp.mauve },
+                --
+                -- -- ["@label"] = { fg = cp.blue },
+                -- ["@method"] = { style = { "italic" } },
+                -- ["@namespace"] = { fg = cp.yellow, style = {} },
+                --
+                -- ["@punctuation.delimiter"] = { fg = cp.teal },
+                -- ["@punctuation.bracket"] = { fg = cp.overlay2 },
+                -- -- ["@string"] = { fg = cp.green },
+                -- -- ["@string.regex"] = { fg = cp.peach },
+                -- -- ["@type"] = { fg = cp.yellow },
+                -- ["@variable"] = { fg = cp.text },
+                -- ["@tag.attribute"] = { fg = cp.mauve, style = { "italic" } },
+                -- ["@tag"] = { fg = cp.green },
+                -- ["@tag.delimiter"] = { fg = cp.maroon },
+                -- ["@text"] = { fg = cp.text },
+                --
+                -- -- ["@text.uri"] = { fg = cp.rosewater, style = { "italic", "underline" } },
+                -- -- ["@text.literal"] = { fg = cp.teal, style = { "italic" } },
+                -- -- ["@text.reference"] = { fg = cp.lavender, style = { "bold" } },
+                -- -- ["@text.title"] = { fg = cp.blue, style = { "bold" } },
+                -- -- ["@text.emphasis"] = { fg = cp.maroon, style = { "italic" } },
+                -- -- ["@text.strong"] = { fg = cp.maroon, style = { "bold" } },
+                -- -- ["@string.escape"] = { fg = cp.pink },
+                --
+                -- -- ["@property.toml"] = { fg = cp.blue },
+                -- -- ["@field.yaml"] = { fg = cp.blue },
+                --
+                -- -- ["@label.json"] = { fg = cp.blue },
+                --
+                -- ["@function.builtin.bash"] = { fg = cp.red, style = { "italic" } },
+                -- ["@parameter.bash"] = { fg = cp.yellow, style = { "italic" } },
+                --
+                -- ["@field.lua"] = { fg = cp.lavender },
+                -- ["@constructor.lua"] = { fg = cp.flamingo },
+                --
+                -- ["@constant.java"] = { fg = cp.teal },
+                --
+                -- ["@property.typescript"] = { fg = cp.lavender, style = { "italic" } },
+                -- -- ["@constructor.typescript"] = { fg = cp.lavender },
+                --
+                -- -- ["@constructor.tsx"] = { fg = cp.lavender },
+                --
                 -- ["@tag.attribute.tsx"] = { fg = cp.mauve },
-
-                ["@type.css"] = { fg = cp.lavender },
-                ["@property.css"] = { fg = cp.yellow, style = { "italic" } },
-
-                ["@property.cpp"] = { fg = cp.text },
-
-                -- ["@symbol"] = { fg = cp.flamingo },
+                --
+                -- ["@type.css"] = { fg = cp.lavender },
+                -- ["@property.css"] = { fg = cp.yellow, style = { "italic" } },
+                --
+                -- ["@property.cpp"] = { fg = cp.text },
+                --
+                -- -- ["@symbol"] = { fg = cp.flamingo },
             }
         end,
     },
