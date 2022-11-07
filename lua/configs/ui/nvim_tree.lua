@@ -6,18 +6,16 @@ local icons = {
 }
 
 require("nvim-tree").setup({
-    create_in_closed_folder = false,
-    respect_buf_cwd = false,
-    auto_reload_on_write = true,
-    disable_netrw = false,
-    hijack_cursor = true,
-    update_cwd = true,
+    disable_netrw = true,
     hijack_netrw = true,
+    open_on_setup = true,
+    hijack_cursor = true,
     hijack_unnamed_buffer_when_opening = false,
-    ignore_buffer_on_setup = false,
-    open_on_setup = false,
-    open_on_setup_file = false,
-    open_on_tab = false,
+    update_cwd = true,
+    update_focused_file = {
+        enable = true,
+        update_cwd = false,
+    },
     sort_by = "name",
     sync_root_with_cwd = true,
     view = {
@@ -109,11 +107,6 @@ require("nvim-tree").setup({
         enable = true,
         auto_open = true,
     },
-    update_focused_file = {
-        enable = true,
-        update_root = false,
-        ignore_list = {},
-    },
     ignore_ft_on_setup = {},
     filters = {
         dotfiles = false,
@@ -127,7 +120,7 @@ require("nvim-tree").setup({
             global = false,
         },
         open_file = {
-            quit_on_open = false,
+            quit_on_open = true,
             resize_window = false,
             window_picker = {
                 enable = true,

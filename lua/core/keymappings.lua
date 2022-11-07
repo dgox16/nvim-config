@@ -1,9 +1,6 @@
 local opts = { noremap = true, silent = true }
 
--- Shorten function name
 local keymap = vim.api.nvim_set_keymap
-
---Rekeymap space as leader key
 
 -- NORMAL MODE
 -- Redimensionar
@@ -23,10 +20,12 @@ keymap("n", "<Leader>q", ":q<CR>", opts)
 keymap("n", "<Leader>n", ":NvimTreeToggle<CR>", opts)
 -- Manejo de Buffers
 keymap("n", "<M-d>", ":bd<CR>", opts)
-keymap("n", "<M-h>", ":BufferLineCycleNext<CR>", opts)
-keymap("n", "<M-l>", ":BufferLineCyclePrev<CR>", opts)
-keymap("n", "<M-g>", ":BufferLinePick<CR>", opts)
+keymap("n", "<M-h>", ":bp<CR>", opts)
+keymap("n", "<M-l>", ":bn<CR>", opts)
+keymap("n", "<Leader>m", ":HopWord<CR>", opts)
 
+keymap("n", "<M-q>", ":ToggleTerm<CR>", opts)
+keymap("t", "<M-q>", ":ToggleTerm<CR>", opts)
 keymap("n", "<Leader>ps", ":PackerSync<CR>", opts)
 -- LSP
 keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)

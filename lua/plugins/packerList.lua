@@ -2,8 +2,6 @@ local M = {}
 
 M.plugins = {
 
-    { "nvim-lua/plenary.nvim" },
-
     -- UI
     { "kyazdani42/nvim-web-devicons" },
 
@@ -21,14 +19,6 @@ M.plugins = {
         after = "nvim-lspconfig",
         config = function()
             require("configs.ui.lualine")
-        end,
-    },
-
-    {
-        "goolord/alpha-nvim",
-        event = "BufWinEnter",
-        config = function()
-            require("configs.ui.alpha")
         end,
     },
 
@@ -71,6 +61,7 @@ M.plugins = {
             require("configs.ui.colorizer")
         end,
     },
+    { "stevearc/dressing.nvim" },
 
     -- Editor
     {
@@ -208,37 +199,42 @@ M.plugins = {
         end,
     },
 
+    -- Tools
+    { "nvim-lua/plenary.nvim" },
+
     {
-        "folke/trouble.nvim",
+        "nvim-telescope/telescope.nvim",
+        cmd = "Telescope",
         config = function()
-            require("configs.others").trouble()
+            require("configs.tools.telescope")
         end,
     },
 
     {
-        "nvim-telescope/telescope.nvim",
+        "folke/trouble.nvim",
+        cmd = { "Trouble", "TroubleToggle", "TroubleRefresh" },
         config = function()
-            require("configs.telescope-settings")
+            require("configs.tools.trouble")
         end,
     },
 
     {
         "nvim-telescope/telescope-fzf-native.nvim",
+        after = "telescope.nvim",
         run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
     },
 
-    { "stevearc/dressing.nvim" },
-
     {
         "NTBBloodbath/rest.nvim",
+        ft = "http",
         config = function()
-            require("configs.rest")
+            require("configs.tools.rest")
         end,
     },
 
-    { "lambdalisue/suda.vim" },
+    { "lambdalisue/suda.vim", cmd = { "SudaRead", "SudaWrite" } },
 
-    { "dstein64/vim-startuptime" },
+    { "dstein64/vim-startuptime", cmd = "StartupTime" },
 }
 
 return vim.tbl_extend("error", M, {})

@@ -12,19 +12,6 @@ local has_words_before = function()
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
-local border = function(hl)
-    return {
-        { "┌", hl },
-        { "─", hl },
-        { "┐", hl },
-        { "│", hl },
-        { "┘", hl },
-        { "─", hl },
-        { "└", hl },
-        { "│", hl },
-    }
-end
-
 local cmp_window = require("cmp.utils.window")
 
 cmp_window.info_ = cmp_window.info
@@ -59,12 +46,14 @@ cmp.setup({
     },
     window = {
         completion = {
-            winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+            border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+            winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
             col_offset = -3,
             side_padding = 0,
         },
         documentation = {
-            border = border("CmpDocBorder"),
+            border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+            winhighlight = "Normal:CmpPmenu,FloatBorder:CmpBorder,CursorLine:PmenuSel,Search:None",
         },
     },
 
@@ -105,8 +94,8 @@ cmp.setup({
         { name = "nvim_lua" },
         { name = "luasnip", keyboard_length = 2 },
         { name = "buffer", keyboard_length = 3 },
-        { name = "dictionary", keyboard_length = 3 },
         { name = "path" },
+        { name = "dictionary", keyboard_length = 3 },
     }),
 })
 

@@ -1,6 +1,19 @@
+vim.api.nvim_command([[packadd telescope-fzf-native.nvim]])
+local icons = { ui = require("configs.ui.icons").get("ui", true) }
+
 require("telescope").setup({
     defaults = {
-        prompt_prefix = "🔍 ",
+        prompt_prefix = " " .. icons.ui.Telescope .. " ",
+        selection_caret = icons.ui.ChevronRight,
+        entry_prefix = " ",
+        scroll_strategy = "limit",
+        path_display = { "absolute" },
+        layout_config = {
+            prompt_position = "bottom",
+            horizontal = {
+                preview_width = 0.5,
+            },
+        },
         file_ignore_patterns = {
             ".git/",
             "node_modules/",

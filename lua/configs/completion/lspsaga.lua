@@ -6,7 +6,6 @@ local icons = {
 }
 
 local function set_sidebar_icons()
-    -- Set icons for sidebar.
     local diagnostic_icons = {
         Error = icons.diagnostics.Error_alt,
         Warn = icons.diagnostics.Warning_alt,
@@ -20,28 +19,9 @@ local function set_sidebar_icons()
     end
 end
 
-local function get_palette()
-    if vim.g.colors_name == "catppuccin" then
-        -- If the colorscheme is catppuccin then use the palette.
-        return require("catppuccin.palettes").get_palette()
-    else
-        -- Default behavior: return lspsaga's default palette.
-        local palette = require("lspsaga.lspkind").colors
-        palette.peach = palette.orange
-        palette.flamingo = palette.orange
-        palette.rosewater = palette.yellow
-
-        palette.mauve = palette.violet
-        palette.sapphire = palette.blue
-        palette.maroon = palette.orange
-
-        return palette
-    end
-end
-
 set_sidebar_icons()
 
-local colors = get_palette()
+local colors = require("catppuccin.palettes").get_palette()
 
 require("lspsaga").init_lsp_saga({
     diagnostic_header = {
@@ -86,14 +66,10 @@ require("lspsaga").init_lsp_saga({
         StaticMethod = { icons.kind.StaticMethod, colors.peach },
     },
     symbol_in_winbar = {
-        enable = true,
+        enable = false,
         in_custom = false,
         separator = " " .. icons.ui.Separator,
         show_file = false,
-        -- define how to customize filename, eg: %:., %
-        -- if not set, use default value `%:t`
-        -- more information see `vim.fn.expand` or `expand`
-        -- ## only valid after set `show_file = true`
         file_formatter = "",
         click_support = function(node, clicks, button, modifiers)
             -- To see all avaiable details: vim.pretty_print(node)
@@ -101,7 +77,6 @@ require("lspsaga").init_lsp_saga({
             local en = node.range["end"]
             if button == "l" then
                 if clicks == 2 then
-                    -- double left click to do nothing
                 else -- jump to node's starting line+char
                     vim.fn.cursor(st.line + 1, st.character + 1)
                 end

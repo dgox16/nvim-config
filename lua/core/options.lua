@@ -68,7 +68,6 @@ local global_local = {
     equalalways = false,
     laststatus = 2,
     display = "lastline",
-    showbreak = "↳  ",
     listchars = "tab:»·,nbsp:+,trail:·,extends:→,precedes:←",
     -- pumblend = 10,
 

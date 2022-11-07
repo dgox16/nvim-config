@@ -56,9 +56,11 @@ catppuccin_setting.setup({
         },
         lsp_trouble = true,
         cmp = true,
+        lsp_saga = true,
         gitsigns = true,
-        leap = true,
         telescope = true,
+        hop = true,
+        mason = true,
         nvimtree = {
             enabled = true,
             show_root = true,
@@ -75,7 +77,10 @@ catppuccin_setting.setup({
     highlight_overrides = {
         mocha = function(cp)
             return {
-                LeapBackdrop = { fg = colors.overlay0 },
+                HopNextKey = { fg = cp.yellow, style = { "bold" } },
+                HopNextKey1 = { fg = cp.blue, style = { "bold" } },
+                HopNextKey2 = { fg = cp.teal, style = { "bold", "italic" } },
+                HopUnmatched = { fg = cp.overlay0 },
                 Comment = { fg = colors.overlay1, style = { "italic" } },
                 TelescopeBorder = { bg = telescope_results, fg = telescope_results },
                 TelescopePromptBorder = { bg = telescope_prompt, fg = telescope_prompt },
