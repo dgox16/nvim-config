@@ -23,13 +23,6 @@ local opts = {
                 text_align = "center",
                 padding = 1,
             },
-            {
-                filetype = "undotree",
-                text = "Undo Tree",
-                text_align = "center",
-                highlight = "Directory",
-                separator = true,
-            },
         },
         diagnostics_indicator = function(count)
             return "(" .. count .. ")"
@@ -39,15 +32,14 @@ local opts = {
 }
 
 if vim.g.colors_name == "catppuccin" then
-    local cp = require("catppuccin.palettes").get_palette() -- Get the palette.
-    cp.none = "NONE" -- Special setting for complete transparent fg/bg.
+    local cp = require("catppuccin.palettes").get_palette()
+    cp.none = "NONE"
 
     local catppuccin_hl_overwrite = {
         highlights = require("catppuccin.groups.integrations.bufferline").get({
             styles = { "italic", "bold" },
             custom = {
                 mocha = {
-                    -- Hint
                     hint = { fg = cp.rosewater },
                     hint_visible = { fg = cp.rosewater },
                     hint_selected = { fg = cp.rosewater },

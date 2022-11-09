@@ -1,21 +1,19 @@
 local lualine = require("lualine")
 
--- Color table for highlights
--- stylua: ignore
 local colors = {
-  bg       = '#181825',
-  fg       = '#cdd6f4',
-  yellow   = '#f9e2af',
-  sky      = '#89dceb',
-  sapphire = '#74c7ec',
-  teal     = '#94e2d5',
-  green    = '#a6e3a1',
-  orange   = '#fab387',
-  pink     = '#f5c2e7',
-  mauve    = '#cba6f7',
-  blue     = '#89b4fa',
-  red      = '#f38ba8',
-  lavender = '#b4befe',
+    bg = "#181825",
+    fg = "#cdd6f4",
+    yellow = "#f9e2af",
+    sky = "#89dceb",
+    sapphire = "#74c7ec",
+    teal = "#94e2d5",
+    green = "#a6e3a1",
+    orange = "#fab387",
+    pink = "#f5c2e7",
+    mauve = "#cba6f7",
+    blue = "#89b4fa",
+    red = "#f38ba8",
+    lavender = "#b4befe",
 }
 
 local modecolor = {
@@ -178,12 +176,12 @@ ins_left({
         end
     end,
     icon = "  LSP:",
-    color = { fg = colors.lavender, gui = "bold" },
+    color = { fg = colors.lavender, gui = "italic" },
 })
 
 ins_right({
-    "o:encoding", -- option component same as &encoding in viml
-    fmt = string.upper, -- I'm not sure why it's upper case either ;)
+    "o:encoding",
+    fmt = string.upper,
     cond = conditions.hide_in_width,
     color = { fg = colors.green, gui = "bold" },
 })
@@ -191,7 +189,7 @@ ins_right({
 ins_right({
     "fileformat",
     fmt = string.upper,
-    icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
+    icons_enabled = false,
     color = { fg = colors.green, gui = "bold" },
 })
 
@@ -203,7 +201,6 @@ ins_right({
 
 ins_right({
     "diff",
-    -- Is it me or the symbol for modified us really weird
     symbols = { added = " ", modified = " ", removed = " " },
 
     diff_color = {
@@ -226,5 +223,4 @@ ins_right({
     padding = { left = 1 },
 })
 
--- Now don't forget to initialize lualine
 lualine.setup(config)

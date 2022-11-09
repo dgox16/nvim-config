@@ -81,8 +81,6 @@ M.plugins = {
         run = ":TSUpdate",
     },
 
-    { "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" },
-
     {
         "p00f/nvim-ts-rainbow",
         after = "nvim-treesitter",
@@ -123,8 +121,6 @@ M.plugins = {
             require("configs.editor.toggleterm")
         end,
     },
-
-    { "famiu/bufdelete.nvim", cmd = { "Bdelete", "Bwipeout", "Bdelete!", "Bwipeout!" } },
 
     -- Completion
     { "barreiroleo/ltex-extra.nvim", event = "BufReadPre" },
@@ -194,6 +190,7 @@ M.plugins = {
 
     {
         "jose-elias-alvarez/null-ls.nvim",
+        event = "BufReadPre",
         config = function()
             require("configs.completion.null_ls")
         end,
@@ -235,6 +232,15 @@ M.plugins = {
     { "lambdalisue/suda.vim", cmd = { "SudaRead", "SudaWrite" } },
 
     { "dstein64/vim-startuptime", cmd = "StartupTime" },
+
+    {
+        "iamcco/markdown-preview.nvim",
+        run = "cd app && npm install",
+        setup = function()
+            require("configs.tools.md_preview")
+        end,
+        ft = { "markdown" },
+    },
 }
 
 return vim.tbl_extend("error", M, {})

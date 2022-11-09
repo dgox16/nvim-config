@@ -54,7 +54,6 @@ local global_local = {
     ruler = true,
     cursorline = true,
 
-    cursorcolumn = true,
     list = true,
     showtabline = 2,
     winwidth = 30,
@@ -63,15 +62,12 @@ local global_local = {
     helpheight = 12,
     previewheight = 12,
     showcmd = false,
-    cmdheight = 1, -- 0, 1, 2
+    cmdheight = 1,
     cmdwinheight = 5,
     equalalways = false,
     laststatus = 2,
     display = "lastline",
     listchars = "tab:»·,nbsp:+,trail:·,extends:→,precedes:←",
-    -- pumblend = 10,
-
-    -- winblend = 10,
     autoread = true,
     autowrite = true,
 
