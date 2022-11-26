@@ -81,6 +81,8 @@ M.plugins = {
         run = ":TSUpdate",
     },
 
+    { "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" },
+
     {
         "p00f/nvim-ts-rainbow",
         after = "nvim-treesitter",

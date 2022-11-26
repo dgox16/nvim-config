@@ -1,12 +1,6 @@
-local icons = { ui = require("configs.ui.icons").get("ui") }
-
 local opts = {
     options = {
         number = nil,
-        modified_icon = icons.ui.Modified,
-        buffer_close_icon = icons.ui.Close,
-        left_trunc_marker = icons.ui.Left,
-        right_trunc_marker = icons.ui.Right,
         max_name_length = 14,
         max_prefix_length = 13,
         tab_size = 20,

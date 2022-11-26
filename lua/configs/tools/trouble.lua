@@ -1,16 +1,9 @@
-local icons = {
-    ui = require("configs.ui.icons").get("ui"),
-    diagnostics = require("configs.ui.icons").get("diagnostics"),
-}
-
 require("trouble").setup({
     position = "bottom",
     height = 10,
     width = 50,
     icons = true,
     mode = "document_diagnostics",
-    fold_open = icons.ui.ArrowOpen,
-    fold_closed = icons.ui.ArrowClosed,
     action_keys = {
         close = "q",
         cancel = "<esc>",
@@ -35,12 +28,5 @@ require("trouble").setup({
     auto_close = false,
     auto_preview = true,
     auto_fold = false,
-    signs = {
-        error = icons.diagnostics.Error_alt,
-        warning = icons.diagnostics.Warning_alt,
-        hint = icons.diagnostics.Hint_alt,
-        information = icons.diagnostics.Information_alt,
-        other = icons.diagnostics.Question_alt,
-    },
     use_lsp_diagnostic_signs = false,
 })

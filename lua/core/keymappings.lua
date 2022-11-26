@@ -81,7 +81,6 @@ keymap("i", "<C-l>", "<Right>", opts)
 keymap("i", "<C-j>", "<Down>", opts)
 keymap("i", "<C-k>", "<Up>", opts)
 
-keymap("i", "<c-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 -- MODO VISUAL
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)

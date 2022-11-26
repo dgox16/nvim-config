@@ -17,6 +17,7 @@
         "prefix": "sbp",
         "body": ["\\vspace{5mm}"]
     },
+
     "Figura doble en linea": {
         "prefix": "doublefig",
         "body": [
@@ -35,24 +36,45 @@
         ],
         "description": "Inserta dos figuras en linea"
     },
+
     "Code": {
         "prefix": "code",
         "body": ["\\begin{lstlisting}", "$1", "\\end{lstlisting}"]
     },
+
     "Code in line": {
         "prefix": "linecode",
         "body": ["\\lstinline{$1}"]
     },
+
     "Math in line": {
         "prefix": "mk",
         "body": ["$$1$"]
     },
+
     "Math Display": {
         "prefix": "dm",
         "body": ["\\[", "\t$1", "\\]"]
     },
+
     "Fraction": {
         "prefix": "fr",
         "body": ["\\frac{$1}{$2}"]
+    },
+    "Tabla con estilo": {
+        "prefix": "tabla",
+        "body": [
+            "\\begin{table}[!htb] \\centering",
+            "\t\\begin{tabular}{+l^c}",
+            "\t\t\\toprule",
+            "\t\t\\multicolumn{2}{c}{\\textbf{${1:Title}}} \\\\\\",
+            "\t\t~     & Col 1      \\\\\\ \\midrule",
+            "\t\tRow 1 & Row1-Col1  \\\\\\",
+            "\t\t\\bottomrule",
+            "\t\\end{tabular}",
+            "\t\\caption[${2:caption}${3: shortCaption}]{${2:caption}${4: longCaption}}",
+            "\t\\label{tab:${5:label}}",
+            "\\end{table}"
+        ]
     }
 }

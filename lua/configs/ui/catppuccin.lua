@@ -109,6 +109,10 @@ catppuccin_setting.setup({
                 LineNr = { fg = cp.overlay2 },
                 Search = { bg = cp.surface1, fg = cp.pink, style = { "bold" } },
                 IncSearch = { bg = cp.pink, fg = cp.surface1 },
+
+                CmpItemAbbr = { fg = cp.text },
+                CmpItemAbbrMatch = { fg = cp.blue, style = { "bold" } },
+                CmpDocBorder = { fg = cp.overlay1, bg = cp.overlay1 },
             }
         end,
     },

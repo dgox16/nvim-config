@@ -1,10 +1,3 @@
-local icons = {
-    diagnostics = require("configs.ui.icons").get("diagnostics"),
-    documents = require("configs.ui.icons").get("documents"),
-    git = require("configs.ui.icons").get("git"),
-    ui = require("configs.ui.icons").get("ui"),
-}
-
 require("nvim-tree").setup({
     disable_netrw = true,
     hijack_netrw = true,
@@ -71,36 +64,6 @@ require("nvim-tree").setup({
             },
             padding = " ",
             symlink_arrow = "  ",
-
-            glyphs = {
-                default = icons.documents.Default, --
-                symlink = icons.documents.Symlink, --
-                bookmark = icons.ui.Bookmark,
-                git = {
-                    unstaged = icons.git.Mod_alt,
-                    staged = icons.git.Add, --
-
-                    unmerged = icons.git.Unmerged,
-                    renamed = icons.git.Rename, --
-                    untracked = icons.git.Untracked, -- "ﲉ"
-                    deleted = icons.git.Remove, --
-                    ignored = icons.git.Ignore, --◌
-                },
-                folder = {
-
-                    -- arrow_open = "",
-                    -- arrow_closed = "",
-                    arrow_open = "",
-                    arrow_closed = "",
-
-                    default = icons.ui.Folder,
-                    open = icons.ui.FolderOpen,
-                    empty = icons.ui.EmptyFolder,
-                    empty_open = icons.ui.EmptyFolderOpen,
-                    symlink = icons.ui.SymlinkFolder,
-                    symlink_open = icons.ui.FolderOpen,
-                },
-            },
         },
     },
     hijack_directories = {
@@ -139,12 +102,6 @@ require("nvim-tree").setup({
         enable = false,
         show_on_dirs = false,
         debounce_delay = 50,
-        icons = {
-            hint = icons.diagnostics.Hint_alt,
-            info = icons.diagnostics.Information_alt,
-            warning = icons.diagnostics.Warning_alt,
-            error = icons.diagnostics.Error_alt,
-        },
     },
     filesystem_watchers = {
         enable = true,
