@@ -29,6 +29,18 @@
                     "tex"
                 ],
                 "path": "./tex.json"
+            },
+            {
+                "language": [
+                    "python"
+                ],
+                "path": "./django.json"
+            },
+            {
+                "language": [
+                    "html"
+                ],
+                "path": "./htmldjango.json"
             }
         ]
     }

@@ -7,28 +7,6 @@ local has_words_before = function()
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
-local function border(hl_name)
-    return {
-        { "╭", hl_name },
-        { "─", hl_name },
-        { "╮", hl_name },
-        { "│", hl_name },
-        { "╯", hl_name },
-        { "─", hl_name },
-        { "╰", hl_name },
-        { "│", hl_name },
-    }
-end
-
-local cmp_window = require("cmp.utils.window")
-
-cmp_window.info_ = cmp_window.info
-cmp_window.info = function(self)
-    local info = self:info_()
-    info.scrollable = false
-    return info
-end
-
 local cmp = require("cmp")
 
 cmp.setup({
@@ -45,16 +23,8 @@ cmp.setup({
         end,
     },
     window = {
-        window = {
-            completion = {
-                winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
-                col_offset = -3,
-                side_padding = 0,
-            },
-            documentation = {
-                border = border("CmpDocBorder"),
-            },
-        },
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
     },
 
     mapping = cmp.mapping.preset.insert({

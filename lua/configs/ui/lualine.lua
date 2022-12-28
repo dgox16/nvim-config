@@ -127,7 +127,7 @@ ins_left({
     color = { fg = colors.blue, gui = "bold" },
 })
 
-ins_left({ "progress", color = { fg = colors.fg, gui = "bold" } })
+ins_left({ "progress", color = { fg = colors.yellow, gui = "bold" } })
 
 ins_left({
     "diagnostics",
@@ -148,42 +148,67 @@ ins_left({
 })
 
 ins_left({
-    function()
-        msg = msg or "Inactive"
-        local bufnr = vim.api.nvim_get_current_buf()
-        local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
-        local clients = vim.lsp.get_active_clients()
-        if next(clients) == nil then
+    function(msg)
+        local buf_clients = vim.lsp.buf_get_clients()
+        if next(buf_clients) == nil then
+            if type(msg) == "boolean" or #msg == 0 then
+                return "Inactive"
+            end
             return msg
         end
-        local lsps = ""
-        for _, client in ipairs(clients) do
-            local filetypes = client.config.filetypes
-            if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-                if lsps == "" then
-                    lsps = client.name
-                else
-                    if not string.find(lsps, client.name) then
-                        lsps = lsps .. ", " .. client.name
-                    end
-                end
+        local buf_client_names = {}
+
+        for _, client in pairs(buf_clients) do
+            if client.name ~= "null-ls" then
+                table.insert(buf_client_names, client.name)
             end
         end
-        if lsps == "" then
-            return msg
-        else
-            return lsps
+
+        local null_ls = require("null-ls")
+        local buf_ft = vim.bo.filetype
+        local s = require("null-ls.sources")
+        local method = null_ls.methods.FORMATTING
+        local alternative_methods = {
+            null_ls.methods.DIAGNOSTICS,
+            null_ls.methods.DIAGNOSTICS_ON_OPEN,
+            null_ls.methods.DIAGNOSTICS_ON_SAVE,
+        }
+
+        local available_sources = s.get_available(buf_ft)
+        local registered = {}
+        for _, source in ipairs(available_sources) do
+            for method in pairs(source.methods) do
+                registered[method] = registered[method] or {}
+                table.insert(registered[method], source.name)
+            end
         end
+
+        local formatters = registered[method]
+
+        local linters = vim.tbl_flatten(vim.tbl_map(function(m)
+            return registered[m] or {}
+        end, alternative_methods))
+
+        vim.list_extend(buf_client_names, linters)
+        vim.list_extend(buf_client_names, formatters)
+
+        local unique_client_names = vim.fn.uniq(buf_client_names)
+
+        local language_servers = table.concat(unique_client_names, ", ")
+
+        return language_servers
     end,
+
     icon = "  LSP:",
     color = { fg = colors.lavender, gui = "italic" },
 })
 
 ins_right({
-    "o:encoding",
+    "filetype",
     fmt = string.upper,
+    icons_enabled = false,
     cond = conditions.hide_in_width,
-    color = { fg = colors.green, gui = "bold" },
+    color = { fg = colors.sky, gui = "bold" },
 })
 
 ins_right({

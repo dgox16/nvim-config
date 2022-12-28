@@ -149,7 +149,6 @@ M.plugins = {
             require("configs.completion.lspsaga")
         end,
     },
-    { "ray-x/lsp_signature.nvim", after = "nvim-lspconfig" },
 
     {
         "hrsh7th/nvim-cmp",

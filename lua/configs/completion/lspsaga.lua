@@ -1,3 +1,4 @@
+local lspsaga = require("lspsaga")
 require("lspsaga").init_lsp_saga({
     symbol_in_winbar = {
         enable = false,
@@ -5,7 +6,6 @@ require("lspsaga").init_lsp_saga({
         show_file = false,
         file_formatter = "",
         click_support = function(node, clicks, button, modifiers)
-            -- To see all avaiable details: vim.pretty_print(node)
             local st = node.range.start
             local en = node.range["end"]
             if button == "l" then

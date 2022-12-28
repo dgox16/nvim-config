@@ -5,7 +5,6 @@ end
 
 local root_pattern = require("lspconfig").util.root_pattern
 
-vim.api.nvim_command([[packadd lsp_signature.nvim]])
 vim.api.nvim_command([[packadd lspsaga.nvim]])
 vim.api.nvim_command([[packadd cmp-nvim-lsp]])
 
@@ -29,17 +28,7 @@ require("lspconfig.ui.windows").default_options.border = "single"
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-local function on_attach(client, bufnr)
-    require("lsp_signature").on_attach({
-        bind = true,
-        use_lspsaga = false,
-        floating_window = true,
-        fix_pos = true,
-        hint_enable = true,
-        hi_parameter = "Search",
-        handler_opts = { "double" },
-    })
-end
+local function on_attach(client, bufnr) end
 
 -- LSP SERVER
 lspconfig.sumneko_lua.setup({
@@ -55,6 +44,7 @@ lspconfig.sumneko_lua.setup({
             },
             workspace = {
                 library = vim.api.nvim_get_runtime_file("", true),
+                checkThirdParty = false,
             },
             telemetry = {
                 enable = false,
@@ -159,6 +149,7 @@ lspconfig.texlab.setup({
         texlab = {
             rootDirectory = ".",
             build = {
+                args = { "-pdf", "-interaction=nonstopmode", "-shell-escape", "-synctex=1", "%f" },
                 onSave = true,
             },
         },
