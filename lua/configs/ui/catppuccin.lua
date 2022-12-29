@@ -73,7 +73,7 @@ catppuccin_setting.setup({
         bufferline = true,
         markdown = true,
         ts_rainbow = true,
-        noice = true,
+        neotree = true,
     },
     highlight_overrides = {
         mocha = function(cp)
@@ -112,10 +112,7 @@ catppuccin_setting.setup({
                 IncSearch = { bg = cp.pink, fg = cp.surface1 },
 
                 CmpItemAbbr = { fg = cp.text },
-                CmpBorder = { fg = cp.red },
                 CmpItemAbbrMatch = { fg = cp.blue, style = { "bold" } },
-                CmpDocBorder = { fg = cp.overlay1, bg = cp.overlay1 },
-                CmPmenu = { bg = cp.red },
             }
         end,
     },

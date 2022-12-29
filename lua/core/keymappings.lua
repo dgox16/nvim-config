@@ -17,11 +17,12 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 keymap("n", "<Leader>w", ":w<CR>", opts)
 keymap("n", "<Leader>q", ":q<CR>", opts)
 -- Abrir explorador de archivos
-keymap("n", "<Leader>n", ":NvimTreeToggle<CR>", opts)
+keymap("n", "<Leader>n", ":Neotree toggle<cr>", opts)
 -- Manejo de Buffers
 keymap("n", "<M-d>", ":bd<CR>", opts)
 keymap("n", "<M-h>", ":bp<CR>", opts)
 keymap("n", "<M-l>", ":bn<CR>", opts)
+keymap("n", "<leader>ñ", ":BufferLinePick<CR>", opts)
 keymap("n", "<Leader>m", ":HopWord<CR>", opts)
 
 keymap("n", "<M-q>", ":ToggleTerm<CR>", opts)
@@ -41,7 +42,6 @@ keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 -- FZF
 keymap("n", "<Leader>ff", "<cmd>Telescope find_files<CR>", opts)
 keymap("n", "<Leader>fw", "<cmd>Telescope live_grep <CR>", opts)
-keymap("n", "<Leader>fb", "<cmd>Telescope buffers <CR>", opts)
 keymap("n", "<Leader>ft", "<cmd>Telescope treesitter<CR>", opts)
 keymap("n", "<Leader>fs", "<cmd>Telescope current_buffer_fuzzy_find case_mode=ignore_case<CR>", opts)
 -- Buscar y remplazar

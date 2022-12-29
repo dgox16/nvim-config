@@ -13,6 +13,7 @@ M.plugins = {
             require("configs.ui.catppuccin")
         end,
     },
+    { "nyoom-engineering/oxocarbon.nvim" },
 
     {
         "hoob3rt/lualine.nvim",
@@ -23,10 +24,14 @@ M.plugins = {
     },
 
     {
-        "kyazdani42/nvim-tree.lua",
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v2.x",
         config = function()
-            require("configs.ui.nvim_tree")
+            require("configs.ui.neo_tree")
         end,
+        requires = {
+            "MunifTanjim/nui.nvim",
+        },
     },
 
     {
@@ -149,6 +154,8 @@ M.plugins = {
             require("configs.completion.lspsaga")
         end,
     },
+
+    { "ray-x/lsp_signature.nvim", after = "nvim-lspconfig" },
 
     {
         "hrsh7th/nvim-cmp",

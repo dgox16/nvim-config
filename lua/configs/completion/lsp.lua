@@ -5,6 +5,7 @@ end
 
 local root_pattern = require("lspconfig").util.root_pattern
 
+vim.api.nvim_command([[packadd lsp_signature.nvim]])
 vim.api.nvim_command([[packadd lspsaga.nvim]])
 vim.api.nvim_command([[packadd cmp-nvim-lsp]])
 
@@ -28,7 +29,17 @@ require("lspconfig.ui.windows").default_options.border = "single"
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-local function on_attach(client, bufnr) end
+local function on_attach(client, bufnr)
+    require("lsp_signature").on_attach({
+        bind = true,
+        auto_close_after = 5,
+        toggle_key = "<C-e>",
+        use_lspsaga = false,
+        floating_window = true,
+        hint_enable = true,
+        handler_opts = { border = "rounded" },
+    })
+end
 
 -- LSP SERVER
 lspconfig.sumneko_lua.setup({

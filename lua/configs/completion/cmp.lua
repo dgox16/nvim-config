@@ -22,9 +22,24 @@ cmp.setup({
             return vim_item
         end,
     },
+    experimental = {
+        ghost_text = true,
+    },
+    completion = {
+        completeopt = "menu,menuone,noinsert",
+    },
     window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
+        completion = {
+            winhighlight = "Normal:NormalFloat,Pmenu:NormalFloat",
+            side_padding = 0,
+            col_offset = -3,
+            border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+            scrollbar = "┃",
+        },
+        documentation = {
+            border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+            scrollbar = "┃",
+        },
     },
 
     mapping = cmp.mapping.preset.insert({
