@@ -13,7 +13,6 @@ M.plugins = {
             require("configs.ui.catppuccin")
         end,
     },
-    { "nyoom-engineering/oxocarbon.nvim" },
 
     {
         "hoob3rt/lualine.nvim",
@@ -24,14 +23,20 @@ M.plugins = {
     },
 
     {
-        "nvim-neo-tree/neo-tree.nvim",
-        branch = "v2.x",
+        "goolord/alpha-nvim",
+        opt = true,
+        event = "BufWinEnter",
         config = function()
-            require("configs.ui.neo_tree")
+            require("configs.ui.alpha")
         end,
-        requires = {
-            "MunifTanjim/nui.nvim",
-        },
+    },
+
+    {
+        "kyazdani42/nvim-tree.lua",
+        cmd = "NvimTreeToggle",
+        config = function()
+            require("configs.ui.nvim_tree")
+        end,
     },
 
     {
@@ -52,7 +57,7 @@ M.plugins = {
 
     {
         "akinsho/bufferline.nvim",
-        event = "BufReadPost",
+        event = "BufWinEnter",
         tag = "*",
         config = function()
             require("configs.ui.bufferline")
@@ -122,7 +127,7 @@ M.plugins = {
 
     {
         "akinsho/toggleterm.nvim",
-        cmd = "ToggleTerm",
+        cmd = { "ToggleTerm", "lua _lazygit_toggle()" },
         tag = "v2.*",
         config = function()
             require("configs.editor.toggleterm")

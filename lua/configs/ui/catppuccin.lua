@@ -13,16 +13,7 @@ local telescope_prompt_title = colors.pink
 local telescope_preview_title = colors.teal
 
 catppuccin_setting.setup({
-    flavour = "mocha",
-    background = { light = "latte", dark = "mocha" },
-    dim_inactive = {
-        enabled = false,
-        shade = "dark",
-        percentage = 0.15,
-    },
-    transparent_background = false,
-    term_colors = true,
-    compile_path = vim.fn.stdpath("cache") .. "/catppuccin",
+    flavour = "latte",
     styles = {
         comments = { "italic" },
         properties = { "italic" },
@@ -118,4 +109,4 @@ catppuccin_setting.setup({
     },
 })
 
-vim.api.nvim_command("colorscheme catppuccin")
+vim.cmd.colorscheme("catppuccin")

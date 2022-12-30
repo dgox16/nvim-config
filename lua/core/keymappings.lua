@@ -17,16 +17,19 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 keymap("n", "<Leader>w", ":w<CR>", opts)
 keymap("n", "<Leader>q", ":q<CR>", opts)
 -- Abrir explorador de archivos
-keymap("n", "<Leader>n", ":Neotree toggle<cr>", opts)
+keymap("n", "<Leader>n", ":NvimTreeToggle<cr>", opts)
+-- Nuevo Archivo
+keymap("n", "<Leader>es", "<CMD>ene!<CR>", opts)
 -- Manejo de Buffers
 keymap("n", "<M-d>", ":bd<CR>", opts)
 keymap("n", "<M-h>", ":bp<CR>", opts)
 keymap("n", "<M-l>", ":bn<CR>", opts)
 keymap("n", "<leader>ñ", ":BufferLinePick<CR>", opts)
 keymap("n", "<Leader>m", ":HopWord<CR>", opts)
-
+-- Terminales
 keymap("n", "<M-q>", ":ToggleTerm<CR>", opts)
 keymap("t", "<M-q>", ":ToggleTerm<CR>", opts)
+--Actualizar Plugins
 keymap("n", "<Leader>ps", ":PackerSync<CR>", opts)
 -- LSP
 keymap("n", "K", ":Lspsaga hover_doc<CR>", opts)
@@ -39,13 +42,17 @@ keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
--- FZF
+-- Telescope
 keymap("n", "<Leader>ff", "<cmd>Telescope find_files<CR>", opts)
+keymap("n", "<Leader>fo", "<cmd>Telescope oldfiles<CR>", opts)
 keymap("n", "<Leader>fw", "<cmd>Telescope live_grep <CR>", opts)
 keymap("n", "<Leader>ft", "<cmd>Telescope treesitter<CR>", opts)
+keymap("n", "<Leader>fn", "<CMD>ene!<CR>", opts)
 keymap("n", "<Leader>fs", "<cmd>Telescope current_buffer_fuzzy_find case_mode=ignore_case<CR>", opts)
 -- Buscar y remplazar
 keymap("n", "<Leader>r", ":%s/\\<<C-r><C-w>\\>//gI<Left><Left><Left>", { noremap = true, silent = false })
+-- Abrir ajustes nvim
+keymap("n", "<Leader>es", ":e $MYVIMRC | :cd %:p:h <CR>", opts)
 -- Ejecutar Python
 keymap("n", "py", ":!python %<CR>", opts)
 -- Punto y coma al final

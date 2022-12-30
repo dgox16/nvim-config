@@ -1,20 +1,6 @@
 local lualine = require("lualine")
 
-local colors = {
-    bg = "#181825",
-    fg = "#cdd6f4",
-    yellow = "#f9e2af",
-    sky = "#89dceb",
-    sapphire = "#74c7ec",
-    teal = "#94e2d5",
-    green = "#a6e3a1",
-    orange = "#fab387",
-    pink = "#f5c2e7",
-    mauve = "#cba6f7",
-    blue = "#89b4fa",
-    red = "#f38ba8",
-    lavender = "#b4befe",
-}
+local colors = require("catppuccin.palettes").get_palette()
 
 local modecolor = {
     n = colors.red,
@@ -60,8 +46,8 @@ local config = {
         component_separators = "",
         section_separators = "",
         theme = {
-            normal = { c = { fg = colors.fg, bg = colors.bg } },
-            inactive = { c = { fg = colors.fg, bg = colors.bg } },
+            normal = { c = { fg = colors.text, bg = colors.mantle } },
+            inactive = { c = { fg = colors.text, bg = colors.mantle } },
         },
     },
     sections = {
@@ -220,7 +206,7 @@ ins_right({
 
 ins_right({
     "branch",
-    icon = " ",
+    icon = "",
     color = { fg = colors.pink, gui = "bold" },
 })
 
