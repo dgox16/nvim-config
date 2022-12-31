@@ -13,7 +13,7 @@ local telescope_prompt_title = colors.pink
 local telescope_preview_title = colors.teal
 
 catppuccin_setting.setup({
-    flavour = "latte",
+    flavour = "mocha",
     styles = {
         comments = { "italic" },
         properties = { "italic" },

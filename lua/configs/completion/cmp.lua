@@ -29,17 +29,10 @@ cmp.setup({
         completeopt = "menu,menuone,noinsert",
     },
     window = {
-        completion = {
-            winhighlight = "Normal:NormalFloat,Pmenu:NormalFloat",
-            side_padding = 0,
-            col_offset = -3,
-            border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-            scrollbar = "┃",
-        },
-        documentation = {
-            border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-            scrollbar = "┃",
-        },
+        completion = cmp.config.window.bordered({
+            winhighlight = "Normal:Normal,FloatBorder:BorderBG,CursorLine:PmenuSel,Search:None",
+        }),
+        documentation = cmp.config.window.bordered(),
     },
 
     mapping = cmp.mapping.preset.insert({
@@ -83,6 +76,8 @@ cmp.setup({
         { name = "dictionary", keyboard_length = 3 },
     }),
 })
+
+vim.api.nvim_set_hl(0, "BorderBG", { fg = "#89b4fa" })
 
 cmp.setup.filetype("gitcommit", {
     sources = cmp.config.sources({

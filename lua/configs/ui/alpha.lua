@@ -90,13 +90,13 @@ dashboard.config.layout = {
 }
 
 alpha.setup(dashboard.opts)
+
 vim.api.nvim_set_hl(0, "AlphaHeader", { fg = "#89b4fa" })
 vim.api.nvim_set_hl(0, "AlphaFooter", { fg = "#b4befe" })
 
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "alpha",
     callback = function()
-        -- store current statusline value and use that
         local old_laststatus = vim.opt.laststatus
         vim.api.nvim_create_autocmd("BufUnload", {
             buffer = 0,

@@ -22,30 +22,7 @@ local opts = {
             return "(" .. count .. ")"
         end,
     },
-    highlights = {},
+    highlights = require("catppuccin.groups.integrations.bufferline").get(),
 }
-
-if vim.g.colors_name == "catppuccin" then
-    local cp = require("catppuccin.palettes").get_palette()
-    cp.none = "NONE"
-
-    local catppuccin_hl_overwrite = {
-        highlights = require("catppuccin.groups.integrations.bufferline").get({
-            styles = { "italic", "bold" },
-            custom = {
-                mocha = {
-                    hint = { fg = cp.rosewater },
-                    hint_visible = { fg = cp.rosewater },
-                    hint_selected = { fg = cp.rosewater },
-                    hint_diagnostic = { fg = cp.rosewater },
-                    hint_diagnostic_visible = { fg = cp.rosewater },
-                    hint_diagnostic_selected = { fg = cp.rosewater },
-                },
-            },
-        }),
-    }
-
-    opts = vim.tbl_deep_extend("force", opts, catppuccin_hl_overwrite)
-end
 
 require("bufferline").setup(opts)
