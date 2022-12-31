@@ -65,7 +65,7 @@ local load_core = function()
     require("core.options")
     require("core.keymappings")
 
-    vim.api.nvim_command([[colorscheme catppuccin]])
+ --   vim.api.nvim_command([[colorscheme catppuccin]])
 end
 
 load_core()

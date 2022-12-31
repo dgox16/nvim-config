@@ -163,6 +163,10 @@ lspconfig.texlab.setup({
                 args = { "-pdf", "-interaction=nonstopmode", "-shell-escape", "-synctex=1", "%f" },
                 onSave = true,
             },
+            forwardSearch = {
+                executable = "zathura",
+                args = { "--synctex-forward", "%l:1:%f", "%p" },
+            },
         },
     },
 

@@ -1,6 +1,7 @@
 local global_local = {
     backup = false, -- creates a backup file
     cmdheight = 1, -- more space in the neovim command line for displaying messages
+    clipboard = "unnamedplus",
     hidden = true, -- required to keep multiple buffers and open multiple buffers
     hlsearch = true, -- highlight all matches on previous search pattern
     ignorecase = true, -- ignore case in search patterns

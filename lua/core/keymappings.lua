@@ -64,7 +64,7 @@ keymap("n", "<C-e>", "2<C-e>", opts)
 keymap("n", "<C-y>", "2<C-y>", opts)
 
 keymap("n", "<M-p>", ":m .-2<CR>==", opts)
-keymap("n", "<M-i>", ":m .+1<CR>==", opts)
+keymap("n", "<M-n>", ":m .+1<CR>==", opts)
 
 keymap("n", "k", "(v:count == 0 ? 'gk' : 'k')", { silent = true, expr = true })
 keymap("n", "j", "(v:count == 0 ? 'gj' : 'j')", { silent = true, expr = true })
@@ -78,7 +78,7 @@ keymap("n", "<CR>", ":noh<CR><CR>", opts)
 keymap("i", "<C-d>", "<C-O>dw", opts)
 
 keymap("i", "<M-p>", "<Esc>:m .-2<CR>==gi", opts)
-keymap("i", "<M-i>", "<Esc>:m .+1<CR>==gi", opts)
+keymap("i", "<M-n>", "<Esc>:m .+1<CR>==gi", opts)
 
 keymap("i", "<C-b>", "<Esc>^i", opts)
 keymap("i", "<C-e>", "<End>", opts)
@@ -94,7 +94,7 @@ keymap("v", ">", ">gv", opts)
 
 -- Mover lineas
 keymap("x", "<M-p>", ":m '<-2<CR>gv=gv", opts)
-keymap("x", "<M-i>", ":m '>+1<CR>gv=gv", opts)
+keymap("x", "<M-n>", ":m '>+1<CR>gv=gv", opts)
 
 -- J K just move
 keymap("x", "J", "j", opts)
