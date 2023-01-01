@@ -53,8 +53,6 @@ keymap("n", "<Leader>fs", "<cmd>Telescope current_buffer_fuzzy_find case_mode=ig
 keymap("n", "<Leader>r", ":%s/\\<<C-r><C-w>\\>//gI<Left><Left><Left>", { noremap = true, silent = false })
 -- Abrir ajustes nvim
 keymap("n", "<Leader>es", ":e $MYVIMRC | :cd %:p:h <CR>", opts)
--- Ejecutar Python
-keymap("n", "py", ":!python %<CR>", opts)
 -- Punto y coma al final
 keymap("n", "<Leader>;", "$a;<Esc>", opts)
 -- Abrir diferentes terminales

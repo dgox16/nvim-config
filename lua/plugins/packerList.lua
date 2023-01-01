@@ -71,6 +71,7 @@ M.plugins = {
             require("configs.ui.colorizer")
         end,
     },
+
     { "stevearc/dressing.nvim" },
 
     -- Editor
@@ -91,7 +92,15 @@ M.plugins = {
         run = ":TSUpdate",
     },
 
-    { "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" },
+    {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        after = "nvim-treesitter",
+    },
+
+    {
+        "JoosepAlviste/nvim-ts-context-commentstring",
+        after = "nvim-treesitter",
+    },
 
     {
         "p00f/nvim-ts-rainbow",
@@ -123,7 +132,10 @@ M.plugins = {
         end,
     },
 
-    { "windwp/nvim-ts-autotag", after = "nvim-treesitter" },
+    {
+        "windwp/nvim-ts-autotag",
+        after = "nvim-treesitter",
+    },
 
     {
         "akinsho/toggleterm.nvim",
@@ -135,7 +147,11 @@ M.plugins = {
     },
 
     -- Completion
-    { "barreiroleo/ltex-extra.nvim", event = "BufReadPre" },
+
+    {
+        "barreiroleo/ltex-extra.nvim",
+        event = "BufReadPre",
+    },
 
     {
         "neovim/nvim-lspconfig",
@@ -160,7 +176,10 @@ M.plugins = {
         end,
     },
 
-    { "ray-x/lsp_signature.nvim", after = "nvim-lspconfig" },
+    {
+        "ray-x/lsp_signature.nvim",
+        after = "nvim-lspconfig",
+    },
 
     {
         "hrsh7th/nvim-cmp",
@@ -242,9 +261,15 @@ M.plugins = {
         end,
     },
 
-    { "lambdalisue/suda.vim", cmd = { "SudaRead", "SudaWrite" } },
+    {
+        "lambdalisue/suda.vim",
+        cmd = { "SudaRead", "SudaWrite" },
+    },
 
-    { "dstein64/vim-startuptime", cmd = "StartupTime" },
+    {
+        "dstein64/vim-startuptime",
+        cmd = "StartupTime",
+    },
 
     {
         "iamcco/markdown-preview.nvim",

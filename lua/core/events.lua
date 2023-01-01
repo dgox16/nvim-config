@@ -1,17 +1,11 @@
 local vim = vim
 local autocmd = {}
 
-function autocmd.nvim_create_augroups(definitions)
-    for group_name, definition in pairs(definitions) do
-        vim.api.nvim_command("augroup " .. group_name)
-        vim.api.nvim_command("autocmd!")
-        for _, def in ipairs(definition) do
-            local command = table.concat(vim.tbl_flatten({ "autocmd", def }), " ")
-            vim.api.nvim_command(command)
-        end
-        vim.api.nvim_command("augroup END")
-    end
-end
+vim.cmd([[
+   autocmd StdinReadPre * let s:std_in=1
+   autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
+       \ execute 'cd '.argv()[0] | execute 'NvimTree' | 
+   ]])
 
 vim.api.nvim_create_autocmd("BufEnter", {
     group = vim.api.nvim_create_augroup("NvimTreeClose", { clear = true }),
@@ -28,11 +22,25 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end,
 })
 
+function autocmd.nvim_create_augroups(definitions)
+    for group_name, definition in pairs(definitions) do
+        vim.api.nvim_command("augroup " .. group_name)
+        vim.api.nvim_command("autocmd!")
+        for _, def in ipairs(definition) do
+            local command = table.concat(vim.tbl_flatten({ "autocmd", def }), " ")
+            vim.api.nvim_command(command)
+        end
+        vim.api.nvim_command("augroup END")
+    end
+end
+
 function autocmd.load_autocmds()
     local definitions = {
         ft = {
             { "FileType", "markdown", "set wrap" },
+            { "FileType", "markdown", "nnoremap <leader>b :MarkdownPreview<CR>" },
             { "FileType", "tex", "set wrap" },
+            { "FileType", "tex", "nnoremap <leader>b :TexlabForward<CR>" },
         },
         yank = {
             {
@@ -42,7 +50,6 @@ function autocmd.load_autocmds()
             },
         },
     }
-
     autocmd.nvim_create_augroups(definitions)
 end
 
